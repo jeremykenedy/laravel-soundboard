@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.soundboard')
 
 @section('template_title')
 @endsection

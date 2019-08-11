@@ -40,6 +40,24 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Can delete users',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Super Admin Permissions',
+                'slug'        => 'perms.super-admin',
+                'description' => 'Has Super Admin Permissions',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Admin Permissions',
+                'slug'        => 'perms.admin',
+                'description' => 'Has Admin Permissions',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'User Permissions',
+                'slug'        => 'perms.user',
+                'description' => 'Has User Permissions',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*
