@@ -1,7 +1,7 @@
 <template>
 
-<b-container-fluid>
-  <b-row>
+<b-container>
+  <b-row v-if='loaded'>
     <b-col xs='12' sm='6' md='6' lg='4' xl='3' v-for='(sound, index) in sounds' :key='index'>
       <b-card class='mb-4'>
         <b-card-title>
@@ -13,7 +13,8 @@
       </b-card>
     </b-col>
   </b-row>
-</b-container-fluid>
+  <sound-loader v-else></sound-loader>
+</b-container>
 
 </template>
 
@@ -22,36 +23,21 @@ export default {
   name: 'Sounds',
   data () {
     return {
-      sounds: null
+      sounds: [],
+      loaded: false
     }
   },
   mounted () {
-    this.sounds = this.getSounds()
+    var self = this
+    self.getSounds()
   },
   methods: {
     getSounds () {
-      return [
-        {
-          title: 'Approved',
-          file: '/sounds/approved.wav'
-        },
-        {
-          title: 'That\'s a bug',
-          file: '/sounds/thatsABug.wav'
-        },
-        {
-          title: 'Tell me how you feel',
-          file: '/sounds/tellMeHowYouFeel.wav'
-        },
-        {
-          title: 'Huh',
-          file: '/sounds/huh.wav'
-        },
-        {
-          title: 'Hmmm',
-          file: '/sounds/hmmm.wav'
-        }
-      ]
+      var self = this
+      window.axios.get('/api/sounds').then(({ data }) => {
+        self.sounds = data
+        self.loaded = true
+      });
     }
   }
 }

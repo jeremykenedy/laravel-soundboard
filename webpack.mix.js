@@ -36,16 +36,16 @@ mix.webpackConfig({
     uglify: true,
 })
 .js('resources/js/app.js', 'public/js')
-.eslint({
-    enforce: 'pre',
-    test: ['js', 'vue'], // will convert to /\.(js|vue)$/ or you can use /\.(js|vue)$/ by itself.
-    exclude: ['node_modules','public'], // will convert to regexp and work. or you can use a regular expression like /node_modules/,
-    loader: 'eslint-loader',
-    options: {
-        fix: true,
-        cache: false
-    }
-})
+// .eslint({
+//     enforce: 'pre',
+//     test: ['js', 'vue'], // will convert to /\.(js|vue)$/ or you can use /\.(js|vue)$/ by itself.
+//     exclude: ['node_modules','public'], // will convert to regexp and work. or you can use a regular expression like /node_modules/,
+//     loader: 'eslint-loader',
+//     options: {
+//         fix: true,
+//         cache: false
+//     }
+// })
 .sass('resources/sass/app.scss', 'public/css')
 .sourceMaps()
 .version()

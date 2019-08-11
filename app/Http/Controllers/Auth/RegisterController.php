@@ -69,4 +69,24 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * Override registration page.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Override registration form.
+     *
+     * @return void
+     */
+    public function showRegistrationForm()
+    {
+        return abort(404);
+    }
 }

@@ -6,6 +6,10 @@
 @section('template_fastload_css')
 @endsection
 
+@section('nav')
+    <nav-bar></nav-bar>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">

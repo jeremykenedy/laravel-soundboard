@@ -25,6 +25,8 @@ Vue.use(BootstrapVue)
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default)
 Vue.component('sounds-component', require('./components/SoundsComponent.vue').default)
 Vue.component('audio-player', require('./components/AudioPlayer.vue').default)
+Vue.component('sound-loader', require('./components/SoundLoader.vue').default)
+Vue.component('nav-bar', require('./components/NavBar.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -11,8 +11,8 @@
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('app.name', trans('titles.app')) }}</title>
-        <meta name="description" content="">
+        <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('soundboard.name') }}</title>
+        <meta name="description" content="{{ config('soundboard.description') }}">
         <meta name="author" content="{{ config('soundboard.author') }}">
         <link rel="shortcut icon" href="/favicon.ico">
 
@@ -28,6 +28,7 @@
 
         {{-- Styles --}}
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+        <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css"> -->
 
         @yield('template_linked_css')
 
@@ -45,6 +46,7 @@
     </head>
     <body>
         <div id="app" v-cloak>
+            @yield('nav')
             <main class="py-4">
                 <div class="container">
                     <div class="row">
