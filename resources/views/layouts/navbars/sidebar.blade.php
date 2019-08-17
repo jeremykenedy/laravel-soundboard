@@ -17,7 +17,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="{{ $user->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($user->email) }}">
+                            <img alt="{{ $currentUser->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($currentUser->email) }}">
                         </span>
                     </div>
                 </a>
@@ -77,24 +77,47 @@
                         Dashboard
                     </a>
                 </li>
-                <li class="nav-item {{ Request::is('sounds') ? 'active' : null }}">
-                    <a class="nav-link" href="{{ route('sounds') }}">
-                        <i class="ni ni-sound-wave text-primary"></i>
-                        Sounds
-                    </a>
-                </li>
-                <li class="nav-item {{ Request::is('themes') ? 'active' : null }}">
-                    <a class="nav-link" href="{{ route('themes') }}">
-                        <i class="fas fa-palette text-primary"></i>
-                        Themes
-                    </a>
-                </li>
-                <li class="nav-item {{ Request::is('user') ? 'active' : null }}">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="fas fa-users text-primary"></i>
-                        User Admin
-                    </a>
-                </li>
+                @if($currentUser->hasPermission('perms.super.admin') || $currentUser->hasPermission('perms.admin'))
+                    <li class="nav-item {{ Request::is('sounds') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('sounds') }}">
+                            <i class="ni ni-sound-wave text-primary"></i>
+                            Sounds
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::is('themes') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('themes') }}">
+                            <i class="fas fa-palette text-primary"></i>
+                            Themes
+                        </a>
+                    </li>
+                @endif
+                @if($currentUser->hasPermission('perms.super.admin'))
+                    <li class="nav-item {{ Request::is('user') || Request::routeIs('user.edit') || Request::routeIs('user.create') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('user.index') }}">
+                            <i class="fas fa-users text-primary"></i>
+                            User Admin
+                        </a>
+                    </li>
+                    <li class="nav-item {{ (Request::is('roles') || Request::is('permissions')) ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('laravelroles::roles.index') }}">
+                            <i class="fas fa-user-shield text-primary"></i>
+                            Roles Admin
+                        </a>
+                    </li>
+                    <li class="nav-item {{ (Request::is('activity') || Request::is('activity/cleared')) ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('activity') }}">
+                            <i class="fas fa-coins text-primary"></i>
+                            Activity
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::routeIs('laravelPhpInfo::phpinfo') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('laravelPhpInfo::phpinfo') }}">
+                            <i class="fab fa-php text-primary"></i>
+                            PHP Info
+                        </a>
+                    </li>
+
+                @endif
             </ul>
         </div>
     </div>

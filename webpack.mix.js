@@ -20,7 +20,6 @@ varFrontEndScripts = [
     'resources/js/app.js',
 ];
 var adminScripts = [
-    'maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
     'public/argon/vendor/jquery/dist/jquery.min.js',
     'public/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js',
     'public/argon/js/argon.js',

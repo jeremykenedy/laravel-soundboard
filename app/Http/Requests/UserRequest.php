@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -15,7 +15,8 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->hasPermission('perms.super-admin');
+        return true;
+        // return auth()->user()->hasPermission('perms.super-admin');
     }
 
     /**
@@ -31,6 +32,9 @@ class UserRequest extends FormRequest
             ],
             'email' => [
                 'required', 'email', Rule::unique((new User)->getTable())->ignore($this->route()->user->id ?? null)
+            ],
+            'name' => [
+                'required'
             ],
             'password' => [
                 $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'

@@ -1,5 +1,5 @@
 <!-- Top navbar -->
-<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+<nav class="navbar navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
 
         <a class="h4 mb-0 text-white text-uppercase d-none d-md-inline-block" href="{{ route('admin') }}"></a>
@@ -9,10 +9,10 @@
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="{{ $user->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($user->email) }}">
+                            <img alt="{{ $currentUser->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($currentUser->email) }}">
                         </span>
                         <div class="media-body ml-2 d-none d-md-block">
-                            <span class="mb-0 text-sm  font-weight-bold">{{ $user->name }}</span>
+                            <span class="mb-0 text-sm  font-weight-bold">{{ $currentUser->name }}</span>
                         </div>
                     </div>
                 </a>

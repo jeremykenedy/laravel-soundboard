@@ -25,8 +25,10 @@
         <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 
         {{-- Styles --}}
-        <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+        @yield('css')
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+
 
         {{-- Scripts --}}
         <script>
@@ -34,9 +36,11 @@
                 'csrfToken' => csrf_token(),
             ]) !!};
         </script>
-
     </head>
     <body class="{{ $class ?? '' }}">
+        @php
+            $currentUser = auth()->user()
+        @endphp
         @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -52,5 +56,6 @@
         @endguest
         <script src="{{ mix('/js/admin.js') }}" defer></script>
         @stack('js')
+        @yield('js')
     </body>
 </html>

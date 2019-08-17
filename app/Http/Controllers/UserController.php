@@ -16,10 +16,8 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        $user = auth()->user();
         $data = [
             'users' => $model->paginate(15),
-            'user'  => $user,
         ];
 
         return view('users.index', $data);
@@ -32,9 +30,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = auth()->user();
+        $roles = config('roles.models.role')::all();
         $data = [
-            'user'  => $user,
+            'roles'  => $roles,
         ];
 
         return view('users.create', $data);
@@ -49,7 +47,9 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $newUser = $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $role    = config('roles.models.role')::find($request->role);
+        $newUser->attachRole($role);
 
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
@@ -62,7 +62,21 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles          = [];
+        $currentRole    = '';
+        $roles          = config('roles.models.role')::all();
+
+        foreach ($user->roles as $user_role) {
+            $currentRole = $user_role;
+        }
+
+        $data = [
+            'currentRole'   => $currentRole,
+            'roles'         => $roles,
+            'user'          => $user,
+        ];
+
+        return view('users.edit', $data);
     }
 
     /**
@@ -72,12 +86,16 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UserRequest $request, User  $user)
+    public function update(UserRequest $request, User $user)
     {
         $user->update(
             $request->merge(['password' => Hash::make($request->get('password'))])
                 ->except([$request->get('password') ? '' : 'password']
         ));
+
+        $role    = config('roles.models.role')::find($request->role);
+        $user->detachAllRoles();
+        $user->attachRole($role);
 
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }
@@ -88,7 +106,7 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User  $user)
+    public function destroy(User $user)
     {
         $user->delete();
 

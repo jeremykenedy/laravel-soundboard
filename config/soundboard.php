@@ -34,12 +34,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Inital Super User to be seeded
+    | Inital Users to be seeded
     |--------------------------------------------------------------------------
     */
+    'baseSuperAdminUser01Name'  => env('INITIAL_SEEDED_SUPER_ADMIN_USERNAME', 'Super Admin'),
+    'baseSuperAdminUser01Email' => env('INITIAL_SEEDED_SUPER_ADMIN_USEREMAIL', 'superadmin@superadmin.com'),
+    'baseSuperAdminUser01PW'    => env('INITIAL_SEEDED_SUPER_ADMIN_USERPASSWORD', 'password'),
 
-    'baseSuperAdminUser01Name'     => env('INITIAL_SEEDED_SUPER_ADMIN_USERNAME', 'admin'),
-    'baseSuperAdminUser01Email'    => env('INITIAL_SEEDED_SUPER_ADMIN_USEREMAIL', 'admin@admin.com'),
-    'baseSuperAdminUser01PW'       => env('INITIAL_SEEDED_SUPER_ADMIN_USERPASSWORD', 'password'),
+    'baseAdminUser01Enabled'    => env('INITIAL_SEEDED_ADMIN_ENABLED', false),
+    'baseAdminUser01Name'       => env('INITIAL_SEEDED_ADMIN_USERNAME', 'Admin'),
+    'baseAdminUser01Email'      => env('INITIAL_SEEDED_ADMIN_USEREMAIL', 'admin@admin.com'),
+    'baseAdminUser01PW'         => env('INITIAL_SEEDED_ADMIN_USERPASSWORD', 'password'),
+
+    'baseUser01Enabled'         => env('INITIAL_SEEDED_USER_ENABLED', false),
+    'baseUser01Name'            => env('INITIAL_SEEDED_USER_USERNAME', 'User'),
+    'baseUser01Email'           => env('INITIAL_SEEDED_USER_USEREMAIL', 'user@user.com'),
+    'baseUser01PW'              => env('INITIAL_SEEDED_USER_USERPASSWORD', 'password'),
 
 ];

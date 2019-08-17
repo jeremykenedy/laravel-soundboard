@@ -7,10 +7,10 @@
 @section('content')
     @include('users.partials.header', ['title' => __('Add User')])
 
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--8">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
-                <div class="card bg-light shadow">
+                <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -44,6 +44,24 @@
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-role">{{ __('Role') }}</label>
+                                    <select class="custom-select form-control form-control-alternative {{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" id="role" required>
+                                        <option value="">{{ __('Select Role') }}</option>
+                                        @if ($roles)
+                                            @foreach($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+
+                                    @if ($errors->has('role'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('role') }}</strong>
                                         </span>
                                     @endif
                                 </div>

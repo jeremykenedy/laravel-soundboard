@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Sound;
 use Illuminate\Http\Request;
+use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
 class SoundsController extends Controller
 {
+    use ActivityLogger;
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +21,8 @@ class SoundsController extends Controller
         $sounds = Sound::enabledSounds()
                     ->sortedSounds()
                     ->get();
+
+        ActivityLogger::activity("All Sounds loaded from API");
 
         return response()->json($sounds);
     }

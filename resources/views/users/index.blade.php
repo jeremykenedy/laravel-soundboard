@@ -7,7 +7,7 @@
 @section('content')
     @include('layouts.headers.spaced')
 
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--8">
         <div class="row">
             <div class="col">
                 <div class="card shadow">
@@ -38,32 +38,48 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{ __('Name') }}</th>
-                                    <th scope="col">{{ __('Email') }}</th>
-                                    <th scope="col">{{ __('Creation Date') }}</th>
+                                    <th scope="col" class="hidden-xs">{{ __('Email') }}</th>
+                                    <th scope="col" >{{ __('Role') }}</th>
+                                    <th scope="col" class="hidden-sm hidden-xs">{{ __('Creation Date') }}</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($users as $aUser)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>
-                                            <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                                        <td>{{ $aUser->name }}</td>
+                                        <td class="hidden-xs">
+                                            <a href="mailto:{{ $aUser->email }}">{{ $aUser->email }}</a>
                                         </td>
-                                        <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                                        <td>
+                                            @foreach ($aUser->roles as $aUser_role)
+                                                @if ($aUser_role->name == 'User')
+                                                    @php $badgeClass = 'primary' @endphp
+                                                @elseif ($aUser_role->name == 'Admin')
+                                                    @php $badgeClass = 'warning' @endphp
+                                                @elseif ($aUser_role->name == 'Unverified')
+                                                    @php $badgeClass = 'danger' @endphp
+                                                @else
+                                                    @php $badgeClass = 'dark' @endphp
+                                                @endif
+                                                <span class="badge badge-{{$badgeClass}}">{{ $aUser_role->name }}</span>
+                                            @endforeach
+                                        </td>
+                                        <td class="hidden-sm hidden-xs">
+                                            {{ $aUser->created_at->format('d/m/Y H:i') }}
+                                        </td>
                                         <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    @if ($user->id != auth()->id())
-                                                        <form action="{{ route('user.destroy', $user) }}" method="post">
+                                                    @if ($aUser->id != auth()->id())
+                                                        <form action="{{ route('user.destroy', $aUser) }}" method="post">
                                                             @csrf
                                                             @method('delete')
-
-                                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
-                                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                                            <a class="dropdown-item" href="{{ route('user.edit', $aUser) }}">{{ __('Edit') }}</a>
+                                                            <button type="button" class="dropdown-item" onclick="return myConfirm(this.parentElement);">
                                                                 {{ __('Delete') }}
                                                             </button>
                                                         </form>
@@ -90,3 +106,7 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+
+@push('js')
+    @include('scripts.sweatalert-delete-user')
+@endpush

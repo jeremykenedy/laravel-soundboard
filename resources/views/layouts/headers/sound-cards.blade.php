@@ -1,7 +1,6 @@
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8 mt--7">
     <div class="container-fluid">
-        <div class="header-body mt-md-4 mt-lg-5">
-            <!-- Card stats -->
+        <div class="header-body mt-md-1">
             <div class="row">
 
                 <div class="col-sm-6">

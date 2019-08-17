@@ -27,12 +27,10 @@ class SoundsController extends Controller
     {
         $sounds         = Sound::sortedSounds()->get();
         $enabledSounds  = Sound::enabledSounds()->sortedSounds()->get();
-        $user           = auth()->user();
 
         $data = [
             'sounds'        => $sounds,
             'enabledSounds' => $enabledSounds,
-            'user'          => $user,
         ];
 
         return view('pages.sounds.index', $data);

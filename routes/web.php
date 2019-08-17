@@ -11,19 +11,22 @@
 |
 */
 
-Route::get('/', 'FrontEndController@index')->name('home');
+// Public Routes
+Route::group(['middleware' => ['web', 'activity']], function () {
+    Route::get('/', 'FrontEndController@index')->name('home');
+    Route::get('/sounds', 'SoundsController@index')->name('sounds');
 
-Auth::routes();
-Route::get('/admin', 'AdminController@index')->name('admin');
-Route::get('/sounds', 'SoundsController@index')->name('sounds');
+    // Login / Registration / Forgot PW routes
+    Auth::routes();
+});
 
-Route::group(['middleware' => 'auth'], function () {
+// Super Admin Routes
+Route::group(['middleware' => ['auth', 'permission:perms.super.admin', 'web', 'activity']], function () {
+    Route::resource('user', 'UserController', ['except' => ['show']]);
+});
 
-	Route::resource('user', 'UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-
+// Admin Routes
+Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activity']], function () {
     Route::resource('themes', 'ThemesManagementController', [
         'names' => [
             'index'     => 'themes',
@@ -38,3 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update-theme', 'ThemesManagementController@updateDefaultTheme')->name('update-theme');
 });
 
+// Registered Users Routes
+Route::group(['middleware' => ['auth', 'permission:perms.user', 'web', 'activity']], function () {
+    Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+});
