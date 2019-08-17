@@ -14,7 +14,7 @@
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('soundboard.name') }}</title>
         <meta name="description" content="{{ config('soundboard.description') }}">
         <meta name="author" content="{{ config('soundboard.author') }}">
-        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
         {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
         <!--[if lt IE 9]>
@@ -29,6 +29,9 @@
         {{-- Styles --}}
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css"> -->
+        @if($theme && ($theme->link != 'null'))
+            <link rel="stylesheet" type="text/css" href="{{ $theme->link }}">
+        @endif
 
         @yield('template_linked_css')
 

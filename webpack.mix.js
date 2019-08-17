@@ -15,6 +15,17 @@ const browserSyncUrl = 'laravel-soundboard.local';
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+varFrontEndScripts = [
+    'resources/js/app.js',
+];
+var adminScripts = [
+    'maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
+    'public/argon/vendor/jquery/dist/jquery.min.js',
+    'public/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js',
+    'public/argon/js/argon.js',
+];
+
 mix.webpackConfig({
     plugins: [
         new ImageminPlugin({
@@ -35,7 +46,8 @@ mix.webpackConfig({
     processCssUrls: false,
     uglify: true,
 })
-.js('resources/js/app.js', 'public/js')
+.js(varFrontEndScripts, 'public/js/app.js')
+.js(adminScripts, 'public/js/admin.js')
 // .eslint({
 //     enforce: 'pre',
 //     test: ['js', 'vue'], // will convert to /\.(js|vue)$/ or you can use /\.(js|vue)$/ by itself.
@@ -46,6 +58,8 @@ mix.webpackConfig({
 //         cache: false
 //     }
 // })
+.autoload({ jquery: ['$', 'window.jQuery', 'jQuery'] })
+.copy('resources/images', 'public/images', true)
 .sass('resources/sass/app.scss', 'public/css')
 .sourceMaps()
 .version()

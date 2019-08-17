@@ -16,7 +16,13 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        $user = auth()->user();
+        $data = [
+            'users' => $model->paginate(15),
+            'user'  => $user,
+        ];
+
+        return view('users.index', $data);
     }
 
     /**
@@ -26,7 +32,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $user = auth()->user();
+        $data = [
+            'user'  => $user,
+        ];
+
+        return view('users.create', $data);
     }
 
     /**

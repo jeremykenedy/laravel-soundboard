@@ -1,5 +1,9 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
+@section('template_title')
+    {!! trans('admin.titles.users') !!}
+@endsection
+
 @section('content')
     @include('layouts.headers.spaced')
 

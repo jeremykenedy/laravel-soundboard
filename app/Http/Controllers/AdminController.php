@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sound;
+use App\Models\Theme;
+use App\Models\User;
+
 
 class AdminController extends Controller
 {
@@ -25,12 +28,18 @@ class AdminController extends Controller
     {
         $sounds         = Sound::sortedSounds()->get();
         $enabledSounds  = Sound::enabledSounds()->sortedSounds()->get();
+        $user           = auth()->user();
+        $users          = User::all();
+        $themes         = Theme::enabledThemes()->get();
 
         $data = [
             'sounds'        => $sounds,
             'enabledSounds' => $enabledSounds,
+            'user'          => $user,
+            'users'         => $users,
+            'themes'        => $themes,
         ];
 
-        return view('dashboard', $data);
+        return view('pages.dashboard', $data);
     }
 }

@@ -15,11 +15,26 @@ Route::get('/', 'FrontEndController@index')->name('home');
 
 Auth::routes();
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/sounds', 'SoundsController@index')->name('sounds');
 
 Route::group(['middleware' => 'auth'], function () {
+
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+    Route::resource('themes', 'ThemesManagementController', [
+        'names' => [
+            'index'     => 'themes',
+            'create'    => 'createtheme',
+            'update'    => 'updatetheme',
+            'store'     => 'storetheme',
+            'edit'      => 'edittheme',
+            'destroy'   => 'destroytheme',
+            'show'      => 'showtheme',
+        ],
+    ]);
+    Route::post('/update-theme', 'ThemesManagementController@updateDefaultTheme')->name('update-theme');
 });
 

@@ -1,6 +1,7 @@
 @extends('layouts.soundboard')
 
 @section('template_title')
+    {!! trans('soundboard.titles.homepage') !!}
 @endsection
 
 @section('template_fastload_css')

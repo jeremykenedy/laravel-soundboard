@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
-@section('content')
-    @include('layouts.headers.cards')
+@section('template_title')
+    {!! trans('admin.titles.sounds') !!}
+@endsection
 
-    <div class="container-fluid mt--7">
-        <div class="row mt-5">
-            <div class="col-xl-8 mb-5 mb-xl-0">
+@section('content')
+    @include('layouts.headers.sound-cards')
+
+    <div class="container-fluid">
+        <div class="row mt--7">
+            <div class="col-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -24,8 +28,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
+                        <table class="table align-items-center table-flush table-sm">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Enabled</th>
@@ -62,6 +65,7 @@
 
         @include('layouts.footers.auth')
     </div>
+
 @endsection
 
 @push('js')
