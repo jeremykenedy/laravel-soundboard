@@ -30,6 +30,7 @@ return [
     */
     'services' => [
         'googleAnalyticsID' => env('SOUNDBOARD_GOOGLEANALYTICSID', null),
+        'octocateEnabled'   => env('SOUNDBOARD_OCTOCAT_ENABLED', true),
     ],
 
     /*

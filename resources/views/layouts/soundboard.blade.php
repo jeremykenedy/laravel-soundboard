@@ -49,15 +49,9 @@
     </head>
     <body>
         <div id="app" v-cloak>
+            @include('partials.octocat')
             @yield('nav')
             <main class="py-4">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            {{-- @include('partials.form-status') --}}
-                        </div>
-                    </div>
-                </div>
                 @yield('content')
             </main>
         </div>
