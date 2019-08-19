@@ -16,16 +16,16 @@ class ThemeServices
      */
     public static function getTheTheme()
     {
-        $self   = new self();
-        $theme  = Theme::find($self->getTheThemeId());
+        $self = new self();
+        $theme = Theme::find($self->getTheThemeId());
 
         return $theme;
     }
 
     /**
-     * Check for random theme
+     * Check for random theme.
      *
-     * @param object $theme  The theme
+     * @param object $theme The theme
      *
      * @return object
      */
@@ -39,16 +39,16 @@ class ThemeServices
     }
 
     /**
-     * Get random theme
+     * Get random theme.
      *
-     * @param object $theme  The theme
+     * @param object $theme The theme
      *
      * @return object
      */
     public static function getRandomTheme($theme)
     {
         $themes = collect(Theme::all()->pluck('id'))->toArray();
-        $themes = array_filter($themes, function($v) use ($theme) {
+        $themes = array_filter($themes, function ($v) use ($theme) {
             return $v != $theme->id;
         });
 

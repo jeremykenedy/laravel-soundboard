@@ -35,7 +35,6 @@ class UsersTableSeeder extends Seeder
             $user->save();
 
             $newSuperAdminSeeded = true;
-
         }
 
         if ($newSuperAdminSeeded) {
@@ -95,6 +94,5 @@ class UsersTableSeeder extends Seeder
                 echo "\033[01;33mAlready Seeded: \033[0mUser\r\n";
             }
         }
-
     }
 }

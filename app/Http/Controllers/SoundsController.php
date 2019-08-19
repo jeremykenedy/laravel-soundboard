@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Sound;
-use App\Models\User;
+use Illuminate\Http\Request;
 
 class SoundsController extends Controller
 {
@@ -25,8 +24,8 @@ class SoundsController extends Controller
      */
     public function index()
     {
-        $sounds         = Sound::sortedSounds()->get();
-        $enabledSounds  = Sound::enabledSounds()->sortedSounds()->get();
+        $sounds = Sound::sortedSounds()->get();
+        $enabledSounds = Sound::enabledSounds()->sortedSounds()->get();
 
         $data = [
             'sounds'        => $sounds,
@@ -49,7 +48,8 @@ class SoundsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -60,7 +60,8 @@ class SoundsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,7 +72,8 @@ class SoundsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -82,8 +84,9 @@ class SoundsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,7 +97,8 @@ class SoundsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
