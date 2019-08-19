@@ -8,7 +8,7 @@
 #### Table of contents
 - [Features](#features)
 - [Installation Instructions](#installation-instructions)
-    - [Build the Front End Assets with Mix](#build-front-end-assets-with-mix)
+    - [Build the Front End Assets with Webpack](#build-front-end-assets-with-webpack)
 - [Seeds](#seeds)
     - [Seeded Roles](#seeded-roles)
     - [Seeded Permissions](#seeded-permissions)
