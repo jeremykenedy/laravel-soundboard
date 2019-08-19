@@ -99,13 +99,15 @@ php artisan get-sounds
 |Super Admin|Level 5|
 
 ##### Seeded Permissions
-  * view.users
-  * create.users
-  * edit.users
-  * delete.users
-  * perms.super-admin
-  * perms.admin
-  * perms.user
+| Name | Slug |
+| :------------ | :------------ |
+|Can View Users|view.users|
+|Can Create Users|create.users|
+|Can Edit Users|edit.users|
+|Can Delete Users|delete.users|
+|Super Admin Permissions|perms.super-admin|
+|Admin Permissions|perms.admin|
+|User Permissions|perms.use |
 
 ##### Seeded Users
 |Email|Password|Access|
