@@ -284,7 +284,14 @@ SOUNDBOARD_OCTOCAT_ENABLED=true
 ```
 
 ### Screenshots
-* TBD
+![Homepage](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/1-home.jpg)
+![Admin Dashboard](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/2-admin-dashboard.jpg)
+![Admin Sounds](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/3-sounds.jpg)
+![Admin Themes](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/4-themes.jpg)
+![Admin Users](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/5-users.jpg)
+![Admin Roles](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/6-roles.jpg)
+![Admin Activity](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/7-activity.jpg)
+![Admin PHP Info](https://github-project-images.s3-us-west-2.amazonaws.com/laravel-soundboard/8-phpinfo.jpg)
 
 ### File Tree
 

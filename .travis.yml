@@ -16,7 +16,7 @@ before_script:
   - php artisan key:generate
   - php artisan migrate
   - composer dump-autoload
-  - php artisan db:seed
+  - php artisan clear-compiled
   - sudo chgrp -R www-data storage bootstrap/cache
   - sudo chmod -R ug+rwx storage bootstrap/cache
   - php artisan migrate
