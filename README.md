@@ -111,7 +111,7 @@ php artisan get-sounds
 
 ##### Seeded Users
 |Email|Password|Access|
-|:------------|:------------|:------------|:------------|:------------|
+| :------------ | :------------ | :------------ | :------------ | :------------ |
 |superadmin@superadmin.com|password|Super Admin Access|Seeded from [.env](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example)|Required|
 |admin@admin.com|password|Super Admin Access|Seeded from [.env](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example)|Optional|
 |user@user.com|password|User Access|Seeded from [.env](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example)|Optional|
