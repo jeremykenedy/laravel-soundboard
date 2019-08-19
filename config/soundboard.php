@@ -11,14 +11,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default entry for blog HTML attribute `subtitle`.
+    | Default entry for HTML attribute `subtitle`.
     |--------------------------------------------------------------------------
     */
     'description' => env('SOUNDBOARD_DEFAULT_DESCRIPTION', 'SoundBoard is an open source soundboard built on Laravel and VueJS'),
 
     /*
     |--------------------------------------------------------------------------
-    | Default entry for blog HTML attribute `author`.
+    | Default entry for HTML attribute `author`.
     |--------------------------------------------------------------------------
     */
     'author' => env('SOUNDBOARD_DEFAULT_AUTHOR', 'Jeremy Kenedy'),
@@ -32,6 +32,13 @@ return [
         'googleAnalyticsID' => env('SOUNDBOARD_GOOGLEANALYTICSID', null),
         'octocateEnabled'   => env('SOUNDBOARD_OCTOCAT_ENABLED', true),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Artisan Command `php artisan get-sounds` associated repository
+    |--------------------------------------------------------------------------
+    */
+    'soundsRepository'  => env('SOUNDBOARD_SOUNDS_REPO', 'https://github.com/jeremykenedy/jeremy-sound-board'),
 
     /*
     |--------------------------------------------------------------------------
