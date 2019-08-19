@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+
+services:
+  - mysql
+
+before_script:
+  - cp .env.travis .env
+  - mysql -u root -e 'create database soundboardtest;'
+  - composer self-update
+  - composer install --dev --prefer-source --no-interaction
+  - php artisan key:generate
+  - php artisan migrate
+  - composer dump-autoload
+  - php artisan db:seed
+  - sudo chgrp -R www-data storage bootstrap/cache
+  - sudo chmod -R ug+rwx storage bootstrap/cache
+  - php artisan migrate
+  - php artisan db:seed
+  - php artisan get-sounds
