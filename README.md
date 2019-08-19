@@ -110,7 +110,7 @@ php artisan get-sounds
 |User Permissions|perms.use |
 
 ##### Seeded Users
-|Email|Password|Access|
+|Email|Password|Access|Config|Status|
 | :------------ | :------------ | :------------ | :------------ | :------------ |
 |superadmin@superadmin.com|password|Super Admin Access|Seeded from [.env](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example)|Required|
 |admin@admin.com|password|Super Admin Access|Seeded from [.env](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example)|Optional|
