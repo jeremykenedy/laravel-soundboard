@@ -15,93 +15,93 @@ class SoundsTableSeeder extends Seeder
         $sounds = [
             [
                 'enabled' => 1,
-                'title' => 'Approved',
-                'file' => '/cloned-sounds/approved.wav'
+                'title'   => 'Approved',
+                'file'    => '/cloned-sounds/approved.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Are you kidding me',
-                'file' => '/cloned-sounds/areYouFuckingKiddingMe.wav'
+                'title'   => 'Are you kidding me',
+                'file'    => '/cloned-sounds/areYouFuckingKiddingMe.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Are you recording me right now',
-                'file' => '/cloned-sounds/areYouRecordingMeRightNow.wav'
+                'title'   => 'Are you recording me right now',
+                'file'    => '/cloned-sounds/areYouRecordingMeRightNow.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Do your planks',
-                'file' => '/cloned-sounds/doYourPlanks.wav'
+                'title'   => 'Do your planks',
+                'file'    => '/cloned-sounds/doYourPlanks.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Expense Approved',
-                'file' => '/cloned-sounds/expenseApproved.wav'
+                'title'   => 'Expense Approved',
+                'file'    => '/cloned-sounds/expenseApproved.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Have Faith',
-                'file' => '/cloned-sounds/haveFailth.wav'
+                'title'   => 'Have Faith',
+                'file'    => '/cloned-sounds/haveFailth.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Hmmm',
-                'file' => '/cloned-sounds/hmmm.wav'
+                'title'   => 'Hmmm',
+                'file'    => '/cloned-sounds/hmmm.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Huh',
-                'file' => '/cloned-sounds/huh.wav'
+                'title'   => 'Huh',
+                'file'    => '/cloned-sounds/huh.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'I Approve that',
-                'file' => '/cloned-sounds/iApproveThat.wav'
+                'title'   => 'I Approve that',
+                'file'    => '/cloned-sounds/iApproveThat.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'I\'ll get back to you on that',
-                'file' => '/cloned-sounds/illGetBackToYouOneThat.wav'
+                'title'   => 'I\'ll get back to you on that',
+                'file'    => '/cloned-sounds/illGetBackToYouOneThat.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Sigh',
-                'file' => '/cloned-sounds/JK-sigh.wav'
+                'title'   => 'Sigh',
+                'file'    => '/cloned-sounds/JK-sigh.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Sorry I have a meeting',
-                'file' => '/cloned-sounds/sorryIHaveAMeeting.wav'
+                'title'   => 'Sorry I have a meeting',
+                'file'    => '/cloned-sounds/sorryIHaveAMeeting.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Sounds like a feature',
-                'file' => '/cloned-sounds/soundsLikeAFeature.wav'
+                'title'   => 'Sounds like a feature',
+                'file'    => '/cloned-sounds/soundsLikeAFeature.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Sounds like a plan',
-                'file' => '/cloned-sounds/soundsLikeAPlan.wav'
+                'title'   => 'Sounds like a plan',
+                'file'    => '/cloned-sounds/soundsLikeAPlan.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Tell me how you feel',
-                'file' => '/cloned-sounds/tellMeHowYouFeel.wav'
+                'title'   => 'Tell me how you feel',
+                'file'    => '/cloned-sounds/tellMeHowYouFeel.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Thats a bug',
-                'file' => '/cloned-sounds/thatsABug.wav'
+                'title'   => 'Thats a bug',
+                'file'    => '/cloned-sounds/thatsABug.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Well thats a game changer',
-                'file' => '/cloned-sounds/wellThatsAGameChanger.wav'
+                'title'   => 'Well thats a game changer',
+                'file'    => '/cloned-sounds/wellThatsAGameChanger.wav',
             ],
             [
                 'enabled' => 1,
-                'title' => 'Yeah sure',
-                'file' => '/cloned-sounds/yeahSure.wav'
+                'title'   => 'Yeah sure',
+                'file'    => '/cloned-sounds/yeahSure.wav',
             ],
         ];
 

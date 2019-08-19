@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the users
+     * Display a listing of the users.
      *
-     * @param  \App\User  $model
+     * @param \App\User $model
+     *
      * @return \Illuminate\View\View
      */
     public function index(User $model)
@@ -24,7 +25,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new user
+     * Show the form for creating a new user.
      *
      * @return \Illuminate\View\View
      */
@@ -39,32 +40,34 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created user in storage
+     * Store a newly created user in storage.
      *
-     * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $model
+     * @param \App\Http\Requests\UserRequest $request
+     * @param \App\User                      $model
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserRequest $request, User $model)
     {
         $newUser = $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-        $role    = config('roles.models.role')::find($request->role);
+        $role = config('roles.models.role')::find($request->role);
         $newUser->attachRole($role);
 
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
     /**
-     * Show the form for editing the specified user
+     * Show the form for editing the specified user.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return \Illuminate\View\View
      */
     public function edit(User $user)
     {
-        $roles          = [];
-        $currentRole    = '';
-        $roles          = config('roles.models.role')::all();
+        $roles = [];
+        $currentRole = '';
+        $roles = config('roles.models.role')::all();
 
         foreach ($user->roles as $user_role) {
             $currentRole = $user_role;
@@ -80,10 +83,11 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified user in storage
+     * Update the specified user in storage.
      *
-     * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $user
+     * @param \App\Http\Requests\UserRequest $request
+     * @param \App\User                      $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserRequest $request, User $user)
@@ -93,7 +97,7 @@ class UserController extends Controller
                 ->except([$request->get('password') ? '' : 'password']
         ));
 
-        $role    = config('roles.models.role')::find($request->role);
+        $role = config('roles.models.role')::find($request->role);
         $user->detachAllRoles();
         $user->attachRole($role);
 
@@ -101,9 +105,10 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified user from storage
+     * Remove the specified user from storage.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)

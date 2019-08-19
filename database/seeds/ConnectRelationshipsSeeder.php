@@ -14,18 +14,18 @@ class ConnectRelationshipsSeeder extends Seeder
         /**
          * Get Permissions.
          */
-        $superAdminPermissions  = config('roles.models.permission')::all();
-        $adminPermissions       = config('roles.models.permission')::where('slug', '!=' , 'perms.super.admin')->get();
-        $userPermissions        = config('roles.models.permission')::where('slug', '=' , 'perms.user')->get();
+        $superAdminPermissions = config('roles.models.permission')::all();
+        $adminPermissions = config('roles.models.permission')::where('slug', '!=', 'perms.super.admin')->get();
+        $userPermissions = config('roles.models.permission')::where('slug', '=', 'perms.user')->get();
 
         /**
          * Get Roles.
          */
         $roleUserpAdmin = config('roles.models.role')::where('name', '=', 'Super Admin')->first();
-        $roleAdmin      = config('roles.models.role')::where('name', '=', 'Admin')->first();
-        $roleUser       = config('roles.models.role')::where('name', '=', 'User')->first();
+        $roleAdmin = config('roles.models.role')::where('name', '=', 'Admin')->first();
+        $roleUser = config('roles.models.role')::where('name', '=', 'User')->first();
 
-        /**
+        /*
          * Attach Permissions to Roles.
          */
         foreach ($superAdminPermissions as $superAdminPermission) {

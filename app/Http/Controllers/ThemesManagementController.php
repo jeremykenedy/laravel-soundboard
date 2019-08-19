@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\DeleteThemeRequest;
 use App\Http\Requests\StoreThemeRequest;
 use App\Http\Requests\ThemeRequest;
 use App\Http\Requests\UpdateThemeRequest;
-use App\Models\User;
 use App\Models\Theme;
 use App\Services\ThemeServices;
 use Illuminate\Http\Request;
@@ -32,10 +30,10 @@ class ThemesManagementController extends Controller
      */
     public function index()
     {
-        $themes         = ThemeServices::getAllThemes();
-        $currentTheme   = ThemeServices::getTheTheme();
-        $enabledThemes  = Theme::enabledThemes()->get();
-        $user           = auth()->user();
+        $themes = ThemeServices::getAllThemes();
+        $currentTheme = ThemeServices::getTheTheme();
+        $enabledThemes = Theme::enabledThemes()->get();
+        $user = auth()->user();
 
         $data = [
             'themes'        => $themes,

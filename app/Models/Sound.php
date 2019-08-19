@@ -83,5 +83,4 @@ class Sound extends Model
     {
         return $query->orderBy('sort_order', $order);
     }
-
 }
