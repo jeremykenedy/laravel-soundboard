@@ -81,7 +81,9 @@ class SoundsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sound = SoundServices::getSound($id);
+
+        return view('pages.sounds.edit', ['sound' => $sound]);
     }
 
     /**
@@ -94,7 +96,7 @@ class SoundsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('saved!');
     }
 
     /**

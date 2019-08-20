@@ -29,7 +29,6 @@
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
 
-
         {{-- Scripts --}}
         <script>
             window.Laravel = {!! json_encode([
@@ -57,6 +56,7 @@
             @endguest
         </div>
         <script src="{{ mix('/js/admin.js') }}" defer></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         @stack('js')
         @yield('js')
     </body>

@@ -13,6 +13,8 @@ return [
     'titles' => [
         'dashboard'     => 'Dashboard',
         'sounds'        => 'Sounds',
+        'sound-show'    => 'Showing Sound :title',
+        'sound-edit'    => 'Editing Sound :title',
         'users'         => 'User Admin',
         'create-user'   => 'Create User',
         'edit-user'     => 'Edit User',

@@ -11897,3 +11897,23 @@ body .bg-translucent-primary {
     transform: scale(1);
   }
 }
+.switch {
+  cursor: pointer;
+}
+.switch .fa {
+  vertical-align: -5px;
+  margin-right: 0.25em;
+}
+.switch .active {
+  display: none;
+}
+.switch input[type=radio] {
+  position: relative;
+  z-index: -1;
+}
+.switch.checked .active {
+  display: inline-block;
+}
+.switch.checked .inactive {
+  display: none;
+}

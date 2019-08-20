@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {!! trans('admin.titles.sounds') !!}
+    {!! trans('admin.titles.sound-show',['title' => $sound->title]) !!}
 @endsection
 
 @section('content')
@@ -26,8 +26,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="table-responsive pb-6">
                         <table class="table align-items-center table-flush table-sm">
                             <thead class="thead-light">
@@ -81,7 +79,6 @@
                 </div>
             </div>
         </div>
-
         @include('layouts.footers.auth')
     </div>
 

@@ -1,0 +1,25 @@
+.switch {
+    cursor: pointer;
+
+    .fa {
+        vertical-align: -5px;
+        margin-right: .25em;
+    }
+
+    .active {
+        display: none;
+    }
+
+    input[type="radio"] {
+        position: relative;
+        z-index: -1;
+    }
+    &.checked {
+        .active {
+            display: inline-block;
+        }
+        .inactive {
+            display: none;
+        }
+    }
+}
