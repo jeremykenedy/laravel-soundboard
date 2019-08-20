@@ -47,6 +47,7 @@
 |Email Error Handling with [laravel-exception-notifier](https://github.com/jeremykenedy/laravel-exception-notifier)|
 |Front-end bootstrap themes with admin management panel [from Bootswatch](https://bootswatch.com/)|
 |Pull Built in sounds files from [Git Repository](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example#L66)|
+|Admin uses [Gravatar by Creativeorange](https://github.com/creativeorange/gravatar) based on email address|
 
 ### Installation Instructions
 1. Run `git clone https://github.com/jeremykenedy/laravel-soundboard.git laravel-soundboard`
