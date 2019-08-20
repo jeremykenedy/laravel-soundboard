@@ -13,4 +13,9 @@ return [
         'list-title'    => 'The following errors occurred:',
         'single-title'  => 'Error',
     ],
+
+    'success' => [
+        'single-title' => 'Success',
+    ],
+
 ];

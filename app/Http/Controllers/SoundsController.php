@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sound;
+use App\Services\SoundServices;
 use Illuminate\Http\Request;
 
 class SoundsController extends Controller
@@ -66,7 +67,9 @@ class SoundsController extends Controller
      */
     public function show($id)
     {
-        //
+        $sound = SoundServices::getSound($id);
+
+        return view('pages.sounds.show', ['sound' => $sound]);
     }
 
     /**
@@ -103,6 +106,9 @@ class SoundsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sound = SoundServices::getSound($id);
+        $sound->delete();
+
+        return redirect('sounds')->with('success', 'Sound deleted <strong>'.$sound->title.'</strong>');
     }
 }

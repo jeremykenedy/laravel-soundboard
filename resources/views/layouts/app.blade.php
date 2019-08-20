@@ -37,23 +37,25 @@
             ]) !!};
         </script>
     </head>
-    <body class="{{ $class ?? '' }}">
-        @php
-            $currentUser = auth()->user()
-        @endphp
-        @auth()
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-            @include('layouts.navbars.sidebar')
-        @endauth
-        <div class="main-content">
-            @include('layouts.navbars.navbar')
-            @yield('content')
+        <body class="{{ $class ?? '' }}">
+            <div id="app" v-cloak>
+            @php
+                $currentUser = auth()->user()
+            @endphp
+            @auth()
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                @include('layouts.navbars.sidebar')
+            @endauth
+            <div class="main-content">
+                @include('layouts.navbars.navbar')
+                @yield('content')
+            </div>
+            @guest()
+                @include('layouts.footers.guest')
+            @endguest
         </div>
-        @guest()
-            @include('layouts.footers.guest')
-        @endguest
         <script src="{{ mix('/js/admin.js') }}" defer></script>
         @stack('js')
         @yield('js')

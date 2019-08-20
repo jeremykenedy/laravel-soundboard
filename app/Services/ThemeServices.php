@@ -8,7 +8,7 @@ use App\Models\Theme;
 class ThemeServices
 {
     /**
-     * Return the blog theme.
+     * Return the theme.
      *
      * @param string $text
      *
@@ -56,7 +56,7 @@ class ThemeServices
     }
 
     /**
-     * Returns the blog theme identifier.
+     * Returns the the theme identifier.
      *
      * @return string
      */
@@ -117,11 +117,11 @@ class ThemeServices
      */
     public static function updateDefaultThemeSetting($themeId)
     {
-        $blogTheme = Setting::where('key', '=', 'theme_id')->first();
-        $blogTheme->value = $themeId;
-        $blogTheme->save();
+        $theTheme = Setting::where('key', '=', 'theme_id')->first();
+        $theTheme->value = $themeId;
+        $theTheme->save();
 
-        return $blogTheme;
+        return $theTheme;
     }
 
     /**

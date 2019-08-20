@@ -37,6 +37,7 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
+                                    <th scope="col"></th>
                                     <th scope="col">{{ __('Name') }}</th>
                                     <th scope="col" class="hidden-xs">{{ __('Email') }}</th>
                                     <th scope="col" >{{ __('Role') }}</th>
@@ -47,6 +48,11 @@
                             <tbody>
                                 @foreach ($users as $aUser)
                                     <tr>
+                                        <td>
+                                            <span class="avatar avatar-sm rounded-circle">
+                                                <img alt="{{ $aUser->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($aUser->email) }}" draggable="false">
+                                            </span>
+                                        </td>
                                         <td>{{ $aUser->name }}</td>
                                         <td class="hidden-xs">
                                             <a href="mailto:{{ $aUser->email }}">{{ $aUser->email }}</a>
@@ -75,10 +81,10 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     @if ($aUser->id != auth()->id())
+                                                        <a class="dropdown-item" href="{{ route('user.edit', $aUser) }}">{{ __('Edit') }}</a>
                                                         <form action="{{ route('user.destroy', $aUser) }}" method="post">
                                                             @csrf
                                                             @method('delete')
-                                                            <a class="dropdown-item" href="{{ route('user.edit', $aUser) }}">{{ __('Edit') }}</a>
                                                             <button type="button" class="dropdown-item" onclick="return myConfirm(this.parentElement);">
                                                                 {{ __('Delete') }}
                                                             </button>

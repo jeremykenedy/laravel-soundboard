@@ -9,7 +9,7 @@
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="{{ $currentUser->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($currentUser->email) }}">
+                            <img alt="{{ $currentUser->name }}" src="{{ Gravatar::fallback(asset('images/avatar-default.png'))->get($currentUser->email) }}" draggable="false">
                         </span>
                         <div class="media-body ml-2 d-none d-md-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{ $currentUser->name }}</span>

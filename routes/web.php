@@ -14,7 +14,6 @@
 // Public Routes
 Route::group(['middleware' => ['web', 'activity']], function () {
     Route::get('/', 'FrontEndController@index')->name('home');
-    Route::get('/sounds', 'SoundsController@index')->name('sounds');
 
     // Login / Registration / Forgot PW routes
     Auth::routes();
@@ -39,6 +38,18 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
         ],
     ]);
     Route::post('/update-theme', 'ThemesManagementController@updateDefaultTheme')->name('update-theme');
+    Route::resource(
+        'sounds',
+        'SoundsController', [
+            'names' => [
+                'index'     => 'sounds',
+                'show'      => 'showsound',
+                'edit'      => 'editsound',
+                'create'    => 'createsound',
+            ],
+        ]
+    );
+
 });
 
 // Registered Users Routes
