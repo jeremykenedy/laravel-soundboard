@@ -1,5 +1,5 @@
 ## Laravel Soundboard
-#### An open source Laravel Soundboard with Admin Panel CRUD (Create Read Update Delete) built on [Laravel](http://laravel.com/) 5.8, [Bootstrap](http://getbootstrap.com) 4, and [Vue.js](https://vuejs.org/)
+#### An open source Laravel Soundboard with Admin Panel CRUD (Create Read Update Delete) built on [Laravel](http://laravel.com/) 5.8, [Bootstrap](http://getbootstrap.com) 4, [Vue.js](https://vuejs.org/), [BootstrapVue](https://bootstrap-vue.js.org/), and [Argon Dashboard](https://www.creative-tim.com/product/argon-dashboard-laravel)
 
 [![Build Status](https://travis-ci.org/jeremykenedy/laravel-soundboard.svg?branch=master)](https://travis-ci.org/jeremykenedy/laravel-soundboard)
 [![StyleCI](https://github.styleci.io/repos/201704305/shield?branch=master)](https://github.styleci.io/repos/201704305)
@@ -27,11 +27,11 @@
 - [License](#license)
 
 ### Features
-| Larablog Features |
+| Laravel Soundboard Features |
 | :------------ |
 |Built on [Laravel](http://laravel.com/) 5.8|
 |Built on [Bootstrap](https://getbootstrap.com/) 4|
-|Front End Built on [Vue.js](https://vuejs.org/) |
+|Front End Built on [Vue.js](https://vuejs.org/) and [BootstrapVue](https://bootstrap-vue.js.org/)|
 |Admin Built on [Argon Dashboard Laravel](https://www.creative-tim.com/product/argon-dashboard-laravel) |
 |Uses [webpack.js](https://webpack.js.org) and [eslint](https://eslint.org/)|
 |Uses [MySQL](https://github.com/mysql) Database (can be changed)|
@@ -45,7 +45,7 @@
 |Admin PHP Information UI using [Laravel PHP Info](https://github.com/jeremykenedy/laravel-phpinfo) Package|
 |Activity Logging using [Laravel-logger](https://github.com/jeremykenedy/laravel-logger)|
 |Email Error Handling with [laravel-exception-notifier](https://github.com/jeremykenedy/laravel-exception-notifier)|
-|Front-end bootstrap themes with admin management panel|
+|Front-end bootstrap themes with admin management panel [from Bootswatch](https://bootswatch.com/)|
 |Pull Built in sounds files from [Git Repository](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example#L66)|
 
 ### Installation Instructions
@@ -57,15 +57,19 @@
 3. From the projects root run `cp .env.example .env`
 4. Configure your `.env` file
 5. Run `composer install` from the projects root folder
-6. Pull in seeded sound files from the projects root folder by running:
+6. Generate Application key from the projects root folder by running:
+```
+php artisan key:generate
+```
+7. Pull in seeded sound files from the projects root folder by running:
 ```
 php artisan get-sounds
 ```
-7. From the projects root folder run `php artisan key:generate`
-8. From the projects root folder run `php artisan migrate`
-9. From the projects root folder run `composer dump-autoload`
-10. From the projects root folder run `php artisan db:seed`
-11. Compile the front end assets with [npm steps](#using-npm) or [yarn steps](#using-yarn).
+8. From the projects root folder run `php artisan key:generate`
+9. From the projects root folder run `php artisan migrate`
+10. From the projects root folder run `composer dump-autoload`
+11. From the projects root folder run `php artisan db:seed`
+12. Compile the front end assets with [npm steps](#using-npm) or [yarn steps](#using-yarn).
 
 #### Build the Front End Assets with Webpack
 ##### Using NPM:
@@ -138,7 +142,7 @@ Here is a list of the custom config files that have been added or modified to th
 
 
 #### Env Variables
-Here is a list of the additonal added [`.env`](https://github.com/jeremykenedy/larablog/blob/master/.env.example) variables:
+Here is a list of the additonal added [`.env`](https://github.com/jeremykenedy/laravel-soundboard/blob/master/.env.example) variables:
 
 ```
 INITIAL_SEEDED_SUPER_ADMIN_USERNAME='Super Admin'
@@ -622,4 +626,4 @@ Before opening an issue there are a couple of considerations:
 Open source projects are the community’s responsibility to use, contribute, and debug.
 
 ### License
-Larablog is licensed under the [MIT license](https://opensource.org/licenses/MIT). Enjoy!
+Laravel Soundboard is licensed under the [MIT license](https://opensource.org/licenses/MIT). Enjoy!
