@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SoundRequest;
 use App\Models\Sound;
 use App\Services\SoundServices;
 use Illuminate\Http\Request;
@@ -94,9 +95,27 @@ class SoundsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SoundRequest $request, $id)
     {
-        dd('saved!');
+        $validated  = $request->validated();
+        $sound      = SoundServices::getSound($id);
+
+        // dd($validated);
+// $file = $request->file('image');
+
+// dd($validated);
+
+
+
+$sound->fill($validated);
+$sound->save();
+
+// dd($validated);
+
+return view('pages.sounds.edit', ['sound' => $sound])->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
+        // dd($sound);
+
+        // dd('saved!');
     }
 
     /**

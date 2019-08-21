@@ -13,7 +13,7 @@ class SoundRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->user()->hasPermission('perms.super.admin') || $this->user()->hasPermission('perms.admin');
     }
 
     /**
@@ -24,7 +24,9 @@ class SoundRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'     => 'required|string|min:3|max:255',
+            'status'    => 'required|boolean',
+            'file'      => 'required|string|min:12|max:255'
         ];
     }
 }
