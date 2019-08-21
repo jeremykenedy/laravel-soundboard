@@ -101,5 +101,10 @@
 
 @push('js')
     @include('scripts.delete-sound')
-    @include('scripts.switch')
+
 @endpush
+
+
+@section('js')
+    @include('scripts.switch')
+@endsection

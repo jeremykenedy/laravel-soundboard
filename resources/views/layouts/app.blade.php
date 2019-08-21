@@ -37,7 +37,7 @@
         </script>
     </head>
         <body class="{{ $class ?? '' }}">
-            <div id="app" v-cloak>
+            <!-- <div id="app" v-cloak> -->
             @php
                 $currentUser = auth()->user()
             @endphp
@@ -54,7 +54,7 @@
             @guest()
                 @include('layouts.footers.guest')
             @endguest
-        </div>
+        <!-- </div> -->
         <script src="{{ mix('/js/admin.js') }}" defer></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         @stack('js')
