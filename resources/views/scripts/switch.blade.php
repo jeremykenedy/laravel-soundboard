@@ -2,7 +2,7 @@
 (function() {
     function classToggle() {
         this.classList.toggle('checked');
-        var radios = document.getElementsByName('status');
+        var radios = document.getElementsByName('enabled');
         for (var i = 0, length = radios.length; i < length; i++)
         {
          if (radios[i].value == 1)

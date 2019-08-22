@@ -36,8 +36,8 @@
             ]) !!};
         </script>
     </head>
-        <body class="{{ $class ?? '' }}">
-            <!-- <div id="app" v-cloak> -->
+    <body class="{{ $class ?? '' }}">
+        <div id="app" v-cloak>
             @php
                 $currentUser = auth()->user()
             @endphp
@@ -54,7 +54,7 @@
             @guest()
                 @include('layouts.footers.guest')
             @endguest
-        <!-- </div> -->
+        </div>
         <script src="{{ mix('/js/admin.js') }}" defer></script>
         @stack('js')
         @yield('js')

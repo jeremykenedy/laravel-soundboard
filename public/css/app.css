@@ -11734,6 +11734,14 @@ body .bg-translucent-primary {
   display: none;
 }
 
+.btn.btn-input {
+  border-radius: 6px 0 0 6px;
+}
+
+.btn.btn-input + input[type=text] {
+  padding-left: 10px;
+}
+
 .card-title {
   font-size: 0.5em;
   margin-bottom: 0.25em;

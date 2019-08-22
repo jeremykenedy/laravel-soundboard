@@ -124,9 +124,16 @@ body {
     }
 }
 
-
 .navbar {
     z-index: 1;
 }
 
 [v-cloak] > * { display:none; }
+
+
+.btn.btn-input {
+    border-radius: 6px 0 0 6px;
+}
+.btn.btn-input + input[type=text] {
+    padding-left: 10px;
+}

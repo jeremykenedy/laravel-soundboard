@@ -19,6 +19,12 @@
             'false' => ''
         ];
     }
+
+    $soundStatus = 1;
+    if(!$sound->enabled) {
+        $soundStatus = 0;
+    }
+
 @endphp
 
 @section('content')
@@ -26,7 +32,9 @@
     <div class="container-fluid">
         <div class="row mt--7">
             <div class="col-12 mb-3 mb-xl-0 mt--6">
+
                 @include('partials.messages')
+
             </div>
             <div class="col-12 mb-5 mb-xl-0">
                 <div class="card shadow">
@@ -65,57 +73,45 @@
                                 </div>
                             </div>
                             <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="status">
-                                        {{ __('Enabled') }}
-                                    </label>
-
-{{ $sound->enabled }}
-
-                                    <label class="switch {{ $soundActive['checked'] }}" for="status">
-                                        <span class="active"><i class="fa fa-toggle-on fa-2x"></i> {{ trans('themes.statusEnabled') }}</span>
-                                        <span class="inactive"><i class="fa fa-toggle-on fa-2x fa-rotate-180"></i> {{ trans('themes.statusDisabled') }}</span>
-                                        <input type="radio" name="status" value="{{ $sound->enabled }}" {{ $soundActive['true'] }}>
+                                <div class="form-group{{ $errors->has('enabled') ? ' has-danger' : '' }}">
+                                    <label class="switch {{ $soundActive['checked'] }}" for="enabled">
+                                        <span class="active"><i class="fa fa-toggle-on fa-2x"></i> {{ __('Enabled') }}</span>
+                                        <span class="inactive"><i class="fa fa-toggle-on fa-2x fa-rotate-180"></i> {{ __('Disabled') }}</span>
+                                        <input type="radio" name="enabled" value={{ $soundStatus }} checked />
 
                                     </label>
-                                    @if ($errors->has('status'))
+                                    @if ($errors->has('enabled'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('status') }}</strong>
+                                            <strong>{{ $errors->first('enabled') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
+
+<!-- <label class="custom-toggle">
+  <input type="checkbox">
+  <span class="custom-toggle-slider rounded-circle"></span>
+</label>
+<span class="clearfix"></span>
+<label class="custom-toggle">
+  <input type="checkbox" checked>
+  <span class="custom-toggle-slider rounded-circle"></span>
+</label> -->
+
                             <div class="pl-lg-4">
-
-
- <div class="input-group">
-   <span class="input-group-btn">
-     <a id="lfm" data-input="file" data-preview="holder" class="btn btn-primary">
-       <i class="fa fa-picture-o"></i> Choose
-     </a>
-   </span>
-   <input id="file" class="form-control" type="text" name="file" value="{{ old('file', $sound->file) }}" readonly>
- </div>
-
-
-<style>
-input[name=file] {
-    pointer-events: none;
- }
-</style>
-
-<!-- <div class="form-group{{ $errors->has('file') ? ' has-danger' : '' }}">
-    <label class="form-control-label" for="file">{{ __('Title') }}</label>
-    <input type="text" name="file" id="file" class="form-control form-control-alternative{{ $errors->has('file') ? ' is-invalid' : '' }}" placeholder="{{ __('File') }}" value="{{ old('file', $sound->file) }}" required>
-    @if ($errors->has('file'))
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('file') }}</strong>
-        </span>
-    @endif
-</div> -->
-
-
-
+                                <div class="form-group{{ $errors->has('file') ? ' has-danger' : '' }}">
+                                    <div class="input-group">
+                                         <a id="lfm" data-input="file" data-preview="holder" class="btn btn-primary text-white btn-input">
+                                           <i class="fa fa-picture-o"></i> Choose
+                                         </a>
+                                        <input id="file" class="form-control" type="text" name="file" value="{{ old('file', $sound->file) }}" readonly>
+                                        @if ($errors->has('file'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('file') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                             <div class="pl-lg-4">
                                 <div class="text-center">

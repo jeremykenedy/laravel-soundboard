@@ -20,7 +20,7 @@ varFrontEndScripts = [
     'resources/js/app.js',
 ];
 var adminScripts = [
-    // 'resources/js/admin.js',
+    'resources/js/admin.js',
     'public/argon/vendor/jquery/dist/jquery.min.js',
     'public/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js',
     'public/argon/js/argon.js',

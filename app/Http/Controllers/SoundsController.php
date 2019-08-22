@@ -99,23 +99,13 @@ class SoundsController extends Controller
     {
         $validated  = $request->validated();
         $sound      = SoundServices::getSound($id);
+        $sound->fill($validated);
+        $sound->save();
 
-        // dd($validated);
-// $file = $request->file('image');
-
-// dd($validated);
-
+        return view('pages.sounds.edit', ['sound' => $sound])->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
 
 
-$sound->fill($validated);
-$sound->save();
 
-// dd($validated);
-
-return view('pages.sounds.edit', ['sound' => $sound])->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
-        // dd($sound);
-
-        // dd('saved!');
     }
 
     /**
