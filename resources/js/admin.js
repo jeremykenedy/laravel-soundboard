@@ -5,17 +5,16 @@
  */
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import jQuery from 'jquery'
 
 window._ = require('lodash')
+require('bootstrap-notify')
 
 try {
-  window.$ = window.jQuery = require('jquery')
+  global.$ = global.jQuery = require('jquery')
 } catch (e) {}
 
-require('jquery')
-
 window.axios = require('axios')
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 const token = document.head.querySelector('meta[name="csrf-token"]')
 

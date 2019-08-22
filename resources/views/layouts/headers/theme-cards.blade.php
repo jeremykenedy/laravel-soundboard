@@ -10,9 +10,9 @@
                                     <h5 class="card-title text-uppercase text-muted mb-0">
                                         {{ trans('admin.themes.current-theme') }}
                                     </h5>
-                                    <span class="h2 font-weight-bold mb-0">
+                                    <div id="current_theme_name" class="h2 font-weight-bold mb-0">
                                         {{ $currentTheme->name }}
-                                    </span>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-success text-white rounded-circle shadow">

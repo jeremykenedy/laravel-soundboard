@@ -5,12 +5,18 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        document.getElementById('currentTheme').onchange = function(){
+        var changeSelection = document.getElementById('currentTheme');
+        changeSelection.onchange = function(){
             var elem = (typeof this.selectedIndex === "undefined" ? window.event.srcElement : this);
             var value = elem.value || elem.options[elem.selectedIndex].value;
-            processThemeChange(value);
+            var themeName = changeSelection.options[changeSelection.selectedIndex].text;
+            processThemeChange(value, themeName);
+// console.log(elem);
+
+
+
         };
-        function processThemeChange(themeId) {
+        function processThemeChange(themeId, themeName) {
             var notificaton = $.notify({
                 icon: "nc-icon nc-refresh-69 spin",
                 message: "{!! trans('themes.theme_updating') !!}"
@@ -36,6 +42,7 @@
                         'message': response.message,
                         'progress': 100,
                     });
+                    $('#current_theme_name').text(themeName);
                 },
                 error: function (response, status, error) {
                     notificaton.update({
