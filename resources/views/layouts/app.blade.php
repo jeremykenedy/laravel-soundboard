@@ -55,7 +55,9 @@
                 @include('layouts.footers.guest')
             @endguest
         </div>
-        <script src="{{ mix('/js/admin.js') }}" defer></script>
+        <script src="{{ mix('/js/admin.js') }}"></script>
+        <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>
         @stack('js')
         @yield('js')
     </body>

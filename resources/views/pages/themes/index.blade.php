@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="card mt--7 mb-4">
             <div class="card-header">
-                @include('partials.default-theme-form')
+                @include('forms.default-theme-form')
             </div>
             <div class="container">
                 @include('partials.messages')

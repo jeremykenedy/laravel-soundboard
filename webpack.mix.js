@@ -46,7 +46,7 @@ mix.webpackConfig({
     processCssUrls: false,
     uglify: true,
 })
-.js(varFrontEndScripts, 'public/js/app.js')
+// .js(varFrontEndScripts, 'public/js/app.js')
 .js(adminScripts, 'public/js/admin.js')
 // .eslint({
 //     enforce: 'pre',
@@ -59,7 +59,7 @@ mix.webpackConfig({
 //     }
 // })
 .autoload({ jquery: ['$', 'window.jQuery', 'jQuery'] })
-.copy('resources/images', 'public/images', true)
+// .copy('resources/images', 'public/images', true)
 .sass('resources/sass/app.scss', 'public/css')
 .sourceMaps()
 .version()

@@ -35,6 +35,14 @@
 
                 @include('partials.messages')
 
+@if(session()->has('success'))
+
+<script>
+    alert('yay');
+</script>
+
+@endif
+
             </div>
             <div class="col-12 mb-5 mb-xl-0">
                 <div class="card shadow">

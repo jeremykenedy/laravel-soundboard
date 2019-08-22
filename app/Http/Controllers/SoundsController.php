@@ -103,9 +103,6 @@ class SoundsController extends Controller
         $sound->save();
 
         return view('pages.sounds.edit', ['sound' => $sound])->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
-
-
-
     }
 
     /**
