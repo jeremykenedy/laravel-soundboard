@@ -61,6 +61,7 @@ mix.webpackConfig({
 .autoload({ jquery: ['$', 'window.jQuery', 'jQuery'] })
 .copy('resources/images', 'public/images', true)
 .sass('resources/sass/app.scss', 'public/css')
+.sass('resources/sass/filemanager.scss', 'public/css')
 .sourceMaps()
 .version()
 .browserSync({

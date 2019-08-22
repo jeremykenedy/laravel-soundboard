@@ -1,0 +1,13 @@
+// Variables
+@import 'variables';
+
+// Shared
+@import 'base';
+
+.text-white {
+    color: $white;
+}
+
+.navbar-default .navbar-brand {
+    @extend .text-white;
+}

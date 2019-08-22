@@ -23,10 +23,11 @@
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/mfb.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/dropzone.min.css') }}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.css">
+  <link href="{{ mix('/css/filemanager.css') }}" rel="stylesheet">
 </head>
 <body>
   <div class="container-fluid" id="wrapper">
-    <div class="panel panel-primary hidden-xs">
+    <div class="panel bg-gradient-primary text-white hidden-xs">
       <div class="panel-heading">
         <h1 class="panel-title">{{ trans('laravel-filemanager::lfm.title-panel') }}</h1>
       </div>
@@ -38,7 +39,7 @@
 
       <div class="col-sm-10 col-xs-12" id="main">
         <nav class="navbar navbar-default" id="nav">
-          <div class="navbar-header">
+          <div class="navbar-header bg-gradient-primary text-white">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-buttons">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
