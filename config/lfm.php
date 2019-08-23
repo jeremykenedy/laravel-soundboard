@@ -46,7 +46,7 @@ return [
     'base_directory' => 'public',
 
     'images_folder_name' => 'photos',
-    'files_folder_name'  => 'sounds',
+    'files_folder_name'  => 'sound-files',
 
     'shared_folder_name' => '/',
     'thumb_folder_name'  => 'thumbs',
