@@ -1,9 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "jeremykenedy/laravel-soundboard",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Laravel Soundbaord.",
     "keywords": [
-        "framework",
+        "souundboard",
         "laravel"
     ],
     "license": "MIT",
