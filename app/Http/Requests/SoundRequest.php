@@ -26,7 +26,7 @@ class SoundRequest extends FormRequest
         return [
             'title'     => 'required|string|min:3|max:255',
             'enabled'   => 'required|boolean',
-            'file'      => 'required|string|min:12|max:255'
+            'file'      => 'required|string|min:12|max:255',
         ];
     }
 }
