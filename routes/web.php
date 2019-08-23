@@ -49,7 +49,6 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
             ],
         ]
     );
-
 });
 
 // Registered Users Routes

@@ -12,96 +12,98 @@ class SoundsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        $folder = '/sound-files';
         $sounds = [
             [
                 'enabled' => 1,
                 'title'   => 'Approved',
-                'file'    => '/sounds/approved.wav',
+                'file'    => $folder . '/approved.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Are you kidding me',
-                'file'    => '/sounds/areYouFuckingKiddingMe.wav',
+                'file'    => $folder . '/areYouFuckingKiddingMe.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Are you recording me right now',
-                'file'    => '/sounds/areYouRecordingMeRightNow.wav',
+                'file'    => $folder . '/areYouRecordingMeRightNow.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Do your planks',
-                'file'    => '/sounds/doYourPlanks.wav',
+                'file'    => $folder . '/doYourPlanks.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Expense Approved',
-                'file'    => '/sounds/expenseApproved.wav',
+                'file'    => $folder . '/expenseApproved.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Have Faith',
-                'file'    => '/sounds/haveFailth.wav',
+                'file'    => $folder . '/haveFailth.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Hmmm',
-                'file'    => '/sounds/hmmm.wav',
+                'file'    => $folder . '/hmmm.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Huh',
-                'file'    => '/sounds/huh.wav',
+                'file'    => $folder . '/huh.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'I Approve that',
-                'file'    => '/sounds/iApproveThat.wav',
+                'file'    => $folder . '/iApproveThat.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'I\'ll get back to you on that',
-                'file'    => '/sounds/illGetBackToYouOneThat.wav',
+                'file'    => $folder . '/illGetBackToYouOneThat.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Sigh',
-                'file'    => '/sounds/JK-sigh.wav',
+                'file'    => $folder . '/JK-sigh.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Sorry I have a meeting',
-                'file'    => '/sounds/sorryIHaveAMeeting.wav',
+                'file'    => $folder . '/sorryIHaveAMeeting.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Sounds like a feature',
-                'file'    => '/sounds/soundsLikeAFeature.wav',
+                'file'    => $folder . '/soundsLikeAFeature.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Sounds like a plan',
-                'file'    => '/sounds/soundsLikeAPlan.wav',
+                'file'    => $folder . '/soundsLikeAPlan.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Tell me how you feel',
-                'file'    => '/sounds/tellMeHowYouFeel.wav',
+                'file'    => $folder . '/tellMeHowYouFeel.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Thats a bug',
-                'file'    => '/sounds/thatsABug.wav',
+                'file'    => $folder . '/thatsABug.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Well thats a game changer',
-                'file'    => '/sounds/wellThatsAGameChanger.wav',
+                'file'    => $folder . '/wellThatsAGameChanger.wav',
             ],
             [
                 'enabled' => 1,
                 'title'   => 'Yeah sure',
-                'file'    => '/sounds/yeahSure.wav',
+                'file'    => $folder . '/yeahSure.wav',
             ],
         ];
 

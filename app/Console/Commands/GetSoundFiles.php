@@ -37,8 +37,8 @@ class GetSoundFiles extends Command
      */
     public function handle()
     {
-        echo shell_exec('rm -R -f public/sounds');
-        echo shell_exec('git clone '.config('soundboard.soundsRepository').' public/sounds');
-        echo shell_exec('rm -f public/sounds/LICENSE public/sounds/README.md');
+        echo shell_exec('rm -R -f public/sound-files');
+        echo shell_exec('git clone '.config('soundboard.soundsRepository').' public/sound-files');
+        echo shell_exec('rm -f public/sound-files/LICENSE public/sound-files/README.md');
     }
 }
