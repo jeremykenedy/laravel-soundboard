@@ -97,8 +97,8 @@ class SoundsController extends Controller
      */
     public function update(SoundRequest $request, $id)
     {
-        $validated  = $request->validated();
-        $sound      = SoundServices::getSound($id);
+        $validated = $request->validated();
+        $sound = SoundServices::getSound($id);
         $sound->fill($validated);
         $sound->save();
 

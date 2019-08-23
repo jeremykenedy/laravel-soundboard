@@ -7,11 +7,11 @@ use App\Models\Sound;
 class SoundServices
 {
     /**
-     * Get the Sounds from Database
+     * Get the Sounds from Database.
      *
-     * @param  int $id      Sound Id
+     * @param int $id Sound Id
      *
-     * @return Collection   The Sound
+     * @return Collection The Sound
      */
     public static function getSound($id)
     {
