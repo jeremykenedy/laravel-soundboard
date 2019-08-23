@@ -1,9 +1,8 @@
 const mix = require('laravel-mix');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-require('laravel-mix-eslint');
-
 const browserSyncUrl = 'laravel-soundboard.local';
+require('laravel-mix-eslint');
 
 /*
  |--------------------------------------------------------------------------
@@ -58,7 +57,10 @@ mix.webpackConfig({
 //         cache: false
 //     }
 // })
-.autoload({ jquery: ['$', 'window.jQuery', 'jQuery'] })
+.autoload({
+    jquery: ['$', 'window.jQuery', 'jQuery'],
+    Popper: 'popper.js/dist/umd/popper.js'
+})
 .copy('resources/images', 'public/images', true)
 .sass('resources/sass/app.scss', 'public/css')
 .sass('resources/sass/filemanager.scss', 'public/css')

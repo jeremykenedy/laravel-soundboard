@@ -6,14 +6,19 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import jQuery from 'jquery'
+import Popper from 'popper.js/dist/umd/popper.js';
 
 window._ = require('lodash')
+
+require('bootstrap/js/dist/util')
+require('bootstrap/js/src/dropdown')
 require('bootstrap-notify')
 
 try {
   global.$ = global.jQuery = require('jquery')
 } catch (e) {}
 
+window.Popper = Popper;
 window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 const token = document.head.querySelector('meta[name="csrf-token"]')
