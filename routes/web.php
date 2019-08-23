@@ -59,3 +59,9 @@ Route::group(['middleware' => ['auth', 'permission:perms.user', 'web', 'activity
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
+
+
+// Route::group(['middleware' => 'auth'], function () {
+//     Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+//     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+// });

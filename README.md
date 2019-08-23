@@ -3,6 +3,9 @@
 
 [![Build Status](https://travis-ci.org/jeremykenedy/laravel-soundboard.svg?branch=master)](https://travis-ci.org/jeremykenedy/laravel-soundboard)
 [![StyleCI](https://github.styleci.io/repos/201704305/shield?branch=master)](https://github.styleci.io/repos/201704305)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 #### Table of contents
@@ -305,7 +308,6 @@ SOUNDBOARD_OCTOCAT_ENABLED=true
 ```
 laravel-soundboard
 ├── .editorconfig
-├── .env
 ├── .env.example
 ├── .env.travis
 ├── .eslintrc.js
@@ -348,9 +350,12 @@ laravel-soundboard
 │   │   │   ├── TrustProxies.php
 │   │   │   └── VerifyCsrfToken.php
 │   │   ├── Requests
+│   │   │   ├── CreateSoundRequest.php
 │   │   │   ├── DeleteThemeRequest.php
+│   │   │   ├── EditSoundRequest.php
 │   │   │   ├── PasswordRequest.php
 │   │   │   ├── ProfileRequest.php
+│   │   │   ├── SoundRequest.php
 │   │   │   ├── StoreThemeRequest.php
 │   │   │   ├── ThemeRequest.php
 │   │   │   ├── UpdateThemeRequest.php
@@ -374,6 +379,7 @@ laravel-soundboard
 │   ├── Rules
 │   │   └── CurrentPasswordCheckRule.php
 │   └── Services
+│       ├── SoundServices.php
 │       └── ThemeServices.php
 ├── artisan
 ├── bootstrap
@@ -395,6 +401,7 @@ laravel-soundboard
 │   ├── hashing.php
 │   ├── laravel-logger.php
 │   ├── laravelPhpInfo.php
+│   ├── lfm.php
 │   ├── logging.php
 │   ├── mail.php
 │   ├── queue.php
@@ -465,29 +472,9 @@ laravel-soundboard
 │   │   └── js
 │   │       ├── argon.js
 │   │       └── argon.min.js
-│   ├── cloned-sounds
-│   │   ├── JK-sigh.wav
-│   │   ├── LICENSE
-│   │   ├── README.md
-│   │   ├── approved.wav
-│   │   ├── areYouFuckingKiddingMe.wav
-│   │   ├── areYouRecordingMeRightNow.wav
-│   │   ├── doYourPlanks.wav
-│   │   ├── expenseApproved.wav
-│   │   ├── haveFailth.wav
-│   │   ├── hmmm.wav
-│   │   ├── huh.wav
-│   │   ├── iApproveThat.wav
-│   │   ├── illGetBackToYouOneThat.wav
-│   │   ├── sorryIHaveAMeeting.wav
-│   │   ├── soundsLikeAFeature.wav
-│   │   ├── soundsLikeAPlan.wav
-│   │   ├── tellMeHowYouFeel.wav
-│   │   ├── thatsABug.wav
-│   │   ├── wellThatsAGameChanger.wav
-│   │   └── yeahSure.wav
 │   ├── css
-│   │   └── app.css
+│   │   ├── app.css
+│   │   └── filemanager.css
 │   ├── favicon.ico
 │   ├── images
 │   │   ├── avatar-default.png
@@ -501,7 +488,26 @@ laravel-soundboard
 │   │   ├── app.js
 │   │   └── app.js.map
 │   ├── mix-manifest.json
-│   └── robots.txt
+│   ├── robots.txt
+│   └── sounds
+│       ├── JK-sigh.wav
+│       ├── approved.wav
+│       ├── areYouFuckingKiddingMe.wav
+│       ├── areYouRecordingMeRightNow.wav
+│       ├── doYourPlanks.wav
+│       ├── expenseApproved.wav
+│       ├── haveFailth.wav
+│       ├── hmmm.wav
+│       ├── huh.wav
+│       ├── iApproveThat.wav
+│       ├── illGetBackToYouOneThat.wav
+│       ├── sorryIHaveAMeeting.wav
+│       ├── soundsLikeAFeature.wav
+│       ├── soundsLikeAPlan.wav
+│       ├── tellMeHowYouFeel.wav
+│       ├── thatsABug.wav
+│       ├── wellThatsAGameChanger.wav
+│       └── yeahSure.wav
 ├── resources
 │   ├── images
 │   │   ├── avatar-default.png
@@ -509,6 +515,7 @@ laravel-soundboard
 │   │   ├── logo.jpg
 │   │   └── logo.png
 │   ├── js
+│   │   ├── admin.js
 │   │   ├── app.js
 │   │   ├── bootstrap.js
 │   │   └── components
@@ -530,11 +537,13 @@ laravel-soundboard
 │   ├── sass
 │   │   ├── _base.scss
 │   │   ├── _bs-visibility-classes.scss
+│   │   ├── _forms.scss
 │   │   ├── _heart.scss
 │   │   ├── _octocat.scss
 │   │   ├── _player.scss
 │   │   ├── _variables.scss
-│   │   └── app.scss
+│   │   ├── app.scss
+│   │   └── filemanager.scss
 │   └── views
 │       ├── auth
 │       │   ├── login.blade.php
@@ -545,6 +554,10 @@ laravel-soundboard
 │       │   └── verify.blade.php
 │       ├── emails
 │       │   └── exception.blade.php
+│       ├── forms
+│       │   ├── default-theme-form.blade.php
+│       │   ├── delete-sound.blade.php
+│       │   └── update-sound-form.blade.php
 │       ├── layouts
 │       │   ├── app.blade.php
 │       │   ├── footers
@@ -568,12 +581,13 @@ laravel-soundboard
 │       │   ├── dashboard.blade.php
 │       │   ├── home.blade.php
 │       │   ├── sounds
-│       │   │   └── index.blade.php
+│       │   │   ├── edit.blade.php
+│       │   │   ├── index.blade.php
+│       │   │   └── show.blade.php
 │       │   └── themes
 │       │       └── index.blade.php
 │       ├── partials
 │       │   ├── analytics.blade.php
-│       │   ├── default-theme-form.blade.php
 │       │   ├── delete-modal.blade.php
 │       │   ├── footer.blade.php
 │       │   ├── messages.blade.php
@@ -582,8 +596,12 @@ laravel-soundboard
 │       ├── profile
 │       │   └── edit.blade.php
 │       ├── scripts
+│       │   ├── change-theme-script.blade.php
 │       │   ├── delete-modal-script.blade.php
-│       │   └── sweatalert-delete-user.blade.php
+│       │   ├── delete-sound.blade.php
+│       │   ├── file-manager.blade.php
+│       │   ├── sweatalert-delete-user.blade.php
+│       │   └── switch.blade.php
 │       ├── users
 │       │   ├── create.blade.php
 │       │   ├── edit.blade.php

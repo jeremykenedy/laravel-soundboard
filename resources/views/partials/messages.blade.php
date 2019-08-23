@@ -21,7 +21,7 @@
 </div>
 @endif
 
-@if(session()->has('error'))
+@if (session('error'))
 <div class="row">
     <div class="col-12">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -40,7 +40,7 @@
 </div>
 @endif
 
-@if(session()->has('success'))
+@if (session('success'))
     <div class="row">
         <div class="col-12">
             <div class="alert alert-success alert-dismissible fade show" role="alert">

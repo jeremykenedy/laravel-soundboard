@@ -102,7 +102,9 @@ class SoundsController extends Controller
         $sound->fill($validated);
         $sound->save();
 
-        return view('pages.sounds.edit', ['sound' => $sound])->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
+        return redirect()
+                    ->back()
+                    ->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
     }
 
     /**
