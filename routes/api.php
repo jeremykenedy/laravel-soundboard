@@ -19,4 +19,3 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['activity']], function () {
     Route::get('sounds', 'Api\SoundsController@index');
 });
-
