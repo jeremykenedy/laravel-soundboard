@@ -41,7 +41,7 @@ return [
         'index' => [
             'title'     => 'Sounds',
             'add-new'   => 'Add New',
-            'table' => [
+            'table'     => [
                 'order'     => 'Order',
                 'enabled'   => 'Enabled',
                 'title'     => 'Title',
@@ -51,7 +51,7 @@ return [
                 'view'      => 'View',
                 'edit'      => 'Edit',
                 'delete'    => 'Delete',
-            ]
+            ],
         ],
         'create' => [
             'back'   => 'Back to Sounds',
@@ -60,7 +60,7 @@ return [
         'edit' => [
             'title'     => 'Editing Sounds: <strong>:title</strong>',
             'back'      => 'Back to Sounds',
-        ]
+        ],
     ],
 
     'dropdown' => [
@@ -87,12 +87,12 @@ return [
         ],
         'deleted' => [
             'title' => 'Deleted!',
-        ]
+        ],
     ],
 
     'messages' => [
         'sound-deleted'         => 'Sound deleted: <strong>:title</strong>',
         'sort-order-updated'    => 'Sort order updated successfully!',
         'status-updated'        => 'Successfully :status: :title',
-    ]
+    ],
 ];

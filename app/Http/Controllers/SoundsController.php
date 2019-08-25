@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SoundRequest;
-use App\Models\Sound;
 use App\Services\SoundServices;
 use Illuminate\Http\Request;
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
@@ -64,7 +63,7 @@ class SoundsController extends Controller
         $validated = $request->validated();
         $sound = SoundServices::storeNewSound($validated);
 
-        ActivityLogger::activity('New sound created: ' . $sound);
+        ActivityLogger::activity('New sound created: '.$sound);
 
         return redirect('sounds')
                     ->with('success', 'Sound created: <strong>'.$sound->title.'</strong>');
@@ -102,7 +101,7 @@ class SoundsController extends Controller
      * Update the specified resource in storage.
      *
      * @param \App\Http\Requests\SoundRequest $request
-     * @param int                      $id
+     * @param int                             $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -111,7 +110,7 @@ class SoundsController extends Controller
         $validated = $request->validated();
         $sound = SoundServices::updateSound(SoundServices::getSound($id), $validated);
 
-        ActivityLogger::activity('Sounds updated: ' . $sound);
+        ActivityLogger::activity('Sounds updated: '.$sound);
 
         return redirect()
                     ->back()
@@ -129,7 +128,7 @@ class SoundsController extends Controller
     {
         $sound = SoundServices::deleteSound(SoundServices::getSound($id));
 
-        ActivityLogger::activity('Sounds deleted: ' . $sound);
+        ActivityLogger::activity('Sounds deleted: '.$sound);
 
         return redirect('sounds')->with('success', 'Sound deleted <strong>'.$sound->title.'</strong>');
     }

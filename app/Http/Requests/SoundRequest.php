@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\SoundAdminRequest;
-
 class SoundRequest extends SoundAdminRequest
 {
     /**

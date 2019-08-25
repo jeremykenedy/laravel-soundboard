@@ -9,8 +9,6 @@ use App\Services\UserServices;
 use Illuminate\Http\Request;
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
-use Illuminate\Support\Facades\Log;
-
 class SoundsController extends Controller
 {
     use ActivityLogger;
@@ -30,9 +28,9 @@ class SoundsController extends Controller
     }
 
     /**
-     * Update the sort order
+     * Update the sort order.
      *
-     * @param \Illuminate\Http\Request  $request  The request
+     * @param \Illuminate\Http\Request $request The request
      *
      * @return \Illuminate\Http\Response
      */
@@ -58,15 +56,15 @@ class SoundsController extends Controller
         ActivityLogger::activity('Sounds sort order updated');
 
         return response()->json([
-            'message' => trans('admin.messages.sort-order-updated')
+            'message' => trans('admin.messages.sort-order-updated'),
         ], 200);
     }
 
     /**
-     * Update enabled/disabled status of a sound
+     * Update enabled/disabled status of a sound.
      *
-     * @param \Illuminate\Http\Request  $request  The request
-     * @param int $id The identifier
+     * @param \Illuminate\Http\Request $request The request
+     * @param int                      $id      The identifier
      *
      * @return \Illuminate\Http\Response
      */
@@ -87,15 +85,15 @@ class SoundsController extends Controller
         ActivityLogger::activity($message);
 
         return response()->json([
-            'message' => $message
+            'message' => $message,
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \Illuminate\Http\Request  $request  The request
-     * @param int $id
+     * @param \Illuminate\Http\Request $request The request
+     * @param int                      $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -105,10 +103,10 @@ class SoundsController extends Controller
 
         $sound = SoundServices::deleteSound(SoundServices::getSound($id));
 
-        ActivityLogger::activity('Sounds deleted: ' . $sound);
+        ActivityLogger::activity('Sounds deleted: '.$sound);
 
         return response()->json([
-            'message' => trans('admin.messages.sound-deleted', ['title' => $sound->title])
+            'message' => trans('admin.messages.sound-deleted', ['title' => $sound->title]),
         ], 200);
     }
 }
