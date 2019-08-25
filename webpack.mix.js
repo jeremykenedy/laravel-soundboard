@@ -65,7 +65,7 @@ mix.webpackConfig({
 .sass('resources/sass/app.scss', 'public/css')
 .sass('resources/sass/filemanager.scss', 'public/css')
 .sourceMaps()
-.version()
-.browserSync({
-    proxy: browserSyncUrl
-});
+.version();
+// .browserSync({
+//     proxy: browserSyncUrl
+// });

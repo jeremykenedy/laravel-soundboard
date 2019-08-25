@@ -12,20 +12,17 @@
             <div class="col-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
-
                         @include('partials.messages')
-
                         <div class="row align-items-center">
                             <div class="col">
                                 <h3 class="mb-0">
-                                    Sounds
+                                    {{ trans('admin.sounds.index.title') }}
                                 </h3>
                             </div>
                             <div class="col text-right">
-
-                                <a href="#!" class="btn btn-sm btn-primary">
+                                <a href="{{ route('createsound') }}" class="btn btn-sm btn-primary">
                                     <i class="fas fa-plus"></i>
-                                    Add New
+                                    {{ trans('admin.sounds.index.add-new') }}
                                 </a>
                             </div>
                         </div>
@@ -34,9 +31,15 @@
                         <table class="table align-items-center table-flush table-sm">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Enabled</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">File</th>
+                                    <th scope="col">
+                                        {{ trans('admin.sounds.index.table.enabled') }}
+                                    </th>
+                                    <th scope="col">
+                                        {{ trans('admin.sounds.index.table.title') }}
+                                    </th>
+                                    <th scope="col">
+                                        {{ trans('admin.sounds.index.table.file') }}
+                                    </th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -45,9 +48,9 @@
                                     <tr>
                                         <td scope="row">
                                             @if($sound->enabled)
-                                                Yes
+                                                {{ trans('admin.sounds.index.table.yes') }}
                                             @else
-                                                No
+                                                {{ trans('admin.sounds.index.table.no') }}
                                             @endif
                                         </td>
                                         <td>
@@ -65,10 +68,10 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item" href="{{ route('showsound', $sound) }}">
-                                                        {{ __('View') }}
+                                                        {{ trans('admin.sounds.index.table.view') }}
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('editsound', $sound) }}">
-                                                        {{ __('Edit') }}
+                                                        {{ trans('admin.sounds.index.table.edit') }}
                                                     </a>
                                                     @include('forms.delete-sound')
                                                 </div>

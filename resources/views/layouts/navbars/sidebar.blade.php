@@ -9,7 +9,7 @@
         {{-- Brand --}}
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
             <img src="{{ asset('images/logo.jpg') }}">
-            SoundBoard
+            {!! trans('admin.brand') !!}
         </a>
 
         {{-- User --}}
@@ -24,29 +24,23 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
+                        <h6 class="text-overflow m-0">
+                        {!! trans('admin.dropdown.welcome') !!}
+                    </h6>
                     </div>
                     <a href="{{ route('profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>{{ __('My profile') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('Settings') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>{{ __('Activity') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>{{ __('Support') }}</span>
+                        <span>
+                            {!! trans('admin.dropdown.myprofile') !!}
+                        </span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span>{{ __('Logout') }}</span>
+                        <span>
+                            {!! trans('admin.dropdown.logout') !!}
+                        </span>
                     </a>
                 </div>
             </li>
@@ -59,6 +53,9 @@
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
                             <img src="{{ asset('images/logo.jpg') }}">
+                            <span class="text-primary">
+                                {!! trans('admin.brand') !!}
+                            </span>
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -75,20 +72,20 @@
                 <li class="nav-item {{ Request::is('admin') ? 'active' : null }}">
                     <a class="nav-link" href="{{ route('admin') }}">
                         <i class="fas fa-tachometer-alt text-primary"></i>
-                        Dashboard
+                        {!! trans('admin.sidebar.dashboard') !!}
                     </a>
                 </li>
                 @if($currentUser->hasPermission('perms.super.admin') || $currentUser->hasPermission('perms.admin'))
-                    <li class="nav-item {{ Request::is('sounds') ? 'active' : null }}">
+                    <li class="nav-item {{ Request::is('sounds') || Request::routeIs('createsound') || Request::routeIs('editsound') ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('sounds') }}">
                             <i class="ni ni-sound-wave text-primary"></i>
-                            Sounds
+                            {!! trans('admin.sidebar.sounds') !!}
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('themes') ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('themes') }}">
                             <i class="fas fa-palette text-primary"></i>
-                            Themes
+                            {!! trans('admin.sidebar.themes') !!}
                         </a>
                     </li>
                 @endif
@@ -96,28 +93,27 @@
                     <li class="nav-item {{ Request::is('user') || Request::routeIs('user.edit') || Request::routeIs('user.create') ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('user.index') }}">
                             <i class="fas fa-users text-primary"></i>
-                            User Admin
+                            {!! trans('admin.sidebar.user-admin') !!}
                         </a>
                     </li>
                     <li class="nav-item {{ (Request::is('roles') || Request::is('permissions')) ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('laravelroles::roles.index') }}">
                             <i class="fas fa-user-shield text-primary"></i>
-                            Roles Admin
+                            {!! trans('admin.sidebar.roles-admin') !!}
                         </a>
                     </li>
                     <li class="nav-item {{ (Request::is('activity') || Request::is('activity/cleared')) ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('activity') }}">
                             <i class="fas fa-coins text-primary"></i>
-                            Activity
+                            {!! trans('admin.sidebar.activity') !!}
                         </a>
                     </li>
                     <li class="nav-item {{ Request::routeIs('laravelPhpInfo::phpinfo') ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('laravelPhpInfo::phpinfo') }}">
                             <i class="fab fa-php text-primary"></i>
-                            PHP Info
+                            {!! trans('admin.sidebar.php-info') !!}
                         </a>
                     </li>
-
                 @endif
             </ul>
         </div>

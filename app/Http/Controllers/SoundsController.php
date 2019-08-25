@@ -26,8 +26,8 @@ class SoundsController extends Controller
      */
     public function index()
     {
-        $sounds = Sound::sortedSounds()->get();
-        $enabledSounds = Sound::enabledSounds()->sortedSounds()->get();
+        $sounds = SoundServices::getSortedSounds();
+        $enabledSounds = SoundServices::getEnabledSortedSounds();
 
         $data = [
             'sounds'        => $sounds,
@@ -44,19 +44,26 @@ class SoundsController extends Controller
      */
     public function create()
     {
-        //
+        $sound = SoundServices::getBlankSound();
+
+        return view('pages.sounds.create', ['sound' => $sound]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\SoundRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SoundRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $sound = SoundServices::storeNewSound($validated);
+
+        return redirect('sounds')
+                    ->with('success', 'Sound created: <strong>'.$sound->title.'</strong>');
+
     }
 
     /**
@@ -90,7 +97,7 @@ class SoundsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\SoundRequest $request
      * @param int                      $id
      *
      * @return \Illuminate\Http\Response
@@ -98,9 +105,7 @@ class SoundsController extends Controller
     public function update(SoundRequest $request, $id)
     {
         $validated = $request->validated();
-        $sound = SoundServices::getSound($id);
-        $sound->fill($validated);
-        $sound->save();
+        $sound = SoundServices::updateSound(SoundServices::getSound($id), $validated);
 
         return redirect()
                     ->back()
@@ -116,8 +121,7 @@ class SoundsController extends Controller
      */
     public function destroy($id)
     {
-        $sound = SoundServices::getSound($id);
-        $sound->delete();
+        $sound = SoundServices::deleteSound(SoundServices::getSound($id));
 
         return redirect('sounds')->with('success', 'Sound deleted <strong>'.$sound->title.'</strong>');
     }

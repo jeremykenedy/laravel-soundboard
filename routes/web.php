@@ -45,7 +45,9 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
                 'index'     => 'sounds',
                 'show'      => 'showsound',
                 'edit'      => 'editsound',
+                'update'    => 'updatesound',
                 'create'    => 'createsound',
+                'store'     => 'storesound',
             ],
         ]
     );

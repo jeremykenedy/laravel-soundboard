@@ -11,7 +11,7 @@ import Popper from 'popper.js/dist/umd/popper.js';
 window._ = require('lodash')
 
 require('bootstrap/js/dist/util')
-require('bootstrap/js/src/dropdown')
+// require('bootstrap/js/src/dropdown')
 require('bootstrap-notify')
 
 try {

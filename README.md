@@ -488,26 +488,7 @@ laravel-soundboard
 │   │   ├── app.js
 │   │   └── app.js.map
 │   ├── mix-manifest.json
-│   ├── robots.txt
-│   └── sounds
-│       ├── JK-sigh.wav
-│       ├── approved.wav
-│       ├── areYouFuckingKiddingMe.wav
-│       ├── areYouRecordingMeRightNow.wav
-│       ├── doYourPlanks.wav
-│       ├── expenseApproved.wav
-│       ├── haveFailth.wav
-│       ├── hmmm.wav
-│       ├── huh.wav
-│       ├── iApproveThat.wav
-│       ├── illGetBackToYouOneThat.wav
-│       ├── sorryIHaveAMeeting.wav
-│       ├── soundsLikeAFeature.wav
-│       ├── soundsLikeAPlan.wav
-│       ├── tellMeHowYouFeel.wav
-│       ├── thatsABug.wav
-│       ├── wellThatsAGameChanger.wav
-│       └── yeahSure.wav
+│   └── robots.txt
 ├── resources
 │   ├── images
 │   │   ├── avatar-default.png

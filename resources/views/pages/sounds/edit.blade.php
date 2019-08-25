@@ -19,17 +19,17 @@
                                 <a href="{{ route('sounds') }}" class="btn btn-sm btn-primary float-right">
                                     <i class="fas fa-reply fa-fw"></i>
                                     <span class="hidden-xs">
-                                        Back to Sounds
+                                        {!! trans('admin.sounds.edit.back') !!}
                                     </span>
                                 </a>
                                 <h3 class="mb-0">
-                                    Showing Sounds: <strong>{{ $sound->title }}</strong>
+                                    {!! trans('admin.sounds.edit.title', ['title' => $sound->title]) !!}
                                 </h3>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        @include('forms.update-sound-form')
+                        @include('forms.sound-form')
                     </div>
                 </div>
             </div>
