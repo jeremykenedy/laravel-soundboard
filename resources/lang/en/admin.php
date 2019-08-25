@@ -42,6 +42,7 @@ return [
             'title'     => 'Sounds',
             'add-new'   => 'Add New',
             'table' => [
+                'order'     => 'Order',
                 'enabled'   => 'Enabled',
                 'title'     => 'Title',
                 'file'      => 'File',
@@ -49,6 +50,7 @@ return [
                 'no'        => 'No',
                 'view'      => 'View',
                 'edit'      => 'Edit',
+                'delete'    => 'Delete',
             ]
         ],
         'create' => [
@@ -76,4 +78,21 @@ return [
         'activity'      => 'Activity',
         'php-info'      => 'PHP Info',
     ],
+
+    'modals' => [
+        'delete' => [
+            'title'     => 'Are you sure you want to delete sound: ',
+            'text'      => 'You won\'t be able to revert this!',
+            'button'    => 'Yes, delete sound',
+        ],
+        'deleted' => [
+            'title' => 'Deleted!',
+        ]
+    ],
+
+    'messages' => [
+        'sound-deleted'         => 'Sound deleted: <strong>:title</strong>',
+        'sort-order-updated'    => 'Sort order updated successfully!',
+        'status-updated'        => 'Successfully :status: :title',
+    ]
 ];

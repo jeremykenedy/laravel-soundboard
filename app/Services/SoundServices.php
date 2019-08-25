@@ -22,6 +22,11 @@ class SoundServices
         return Sound::findOrFail($id);
     }
 
+    public static function getAllSounds()
+    {
+        return Sound::all();
+    }
+
     /**
      * Gets the sorted sounds.
      *
@@ -60,9 +65,26 @@ class SoundServices
      *
      * @return Collection Sound
      */
-    public static function updateSound($sound, $soundData)
+    public static function updateSound(Sound $sound, $soundData)
     {
         $sound->fill($soundData);
+        $sound->save();
+
+        return $sound;
+    }
+
+    /**
+     * Update a sound enabled/disabled
+     *
+     * @param int $soundId      The sound identifier
+     * @param boolean $status   The status
+     *
+     * @return collection \App\Models\Sound\Sound $sound
+     */
+    public static function updateSoundStatus($soundId, $status)
+    {
+        $sound = self::getSound($soundId);
+        $sound->enabled = $status;
         $sound->save();
 
         return $sound;
@@ -91,7 +113,7 @@ class SoundServices
      *
      * @return Collection of deleted Sound
      */
-    public static function deleteSound($sound)
+    public static function deleteSound(Sound $sound)
     {
         $sound->delete();
 

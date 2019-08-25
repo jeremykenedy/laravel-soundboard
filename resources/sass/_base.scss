@@ -137,3 +137,20 @@ body {
 .btn.btn-input + input[type=text] {
     padding-left: 10px;
 }
+
+.cursor-grab {
+    cursor: grab;
+}
+
+.cursor-grab {
+    cursor: pointer;
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    &:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
+}

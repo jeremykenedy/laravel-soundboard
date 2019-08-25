@@ -14,8 +14,12 @@ use Illuminate\Http\Request;
 */
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
+//     return $request->user()->with('roles')->find($request->user()->id);
 // });
+
 Route::group(['middleware' => ['activity']], function () {
     Route::get('sounds', 'Api\SoundsController@index');
+    Route::put('sounds/updateAll', 'Api\SoundsController@updateAllSortOrder');
+    Route::patch('sound/updateEnabled/{id}', 'Api\SoundsController@updateEnabled');
+    Route::post('sound/delete/{id}', 'Api\SoundsController@destroy');
 });

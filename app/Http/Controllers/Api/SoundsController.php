@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sound;
+use App\Services\SoundServices;
+use App\Services\UserServices;
 use Illuminate\Http\Request;
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
+
+use Illuminate\Support\Facades\Log;
 
 class SoundsController extends Controller
 {
@@ -18,9 +22,7 @@ class SoundsController extends Controller
      */
     public function index()
     {
-        $sounds = Sound::enabledSounds()
-                    ->sortedSounds()
-                    ->get();
+        $sounds = SoundServices::getEnabledSortedSounds();
 
         ActivityLogger::activity('All Sounds loaded from API');
 
@@ -28,51 +30,85 @@ class SoundsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update the sort order
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request  $request  The request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function updateAllSortOrder(Request $request)
     {
-        //
+        UserServices::checkIsUserAdminOrHigher($request->userId);
+
+        $this->validate($request, [
+            'sounds.*.sort_order' => 'required|numeric',
+        ]);
+
+        $sounds = SoundServices::getAllSounds();
+
+        foreach ($sounds as $sound) {
+            $id = $sound->id;
+            foreach ($request->sounds as $soundsNew) {
+                if ($soundsNew['id'] == $id) {
+                    $sound->update(['sort_order' => $soundsNew['sort_order']]);
+                }
+            }
+        }
+
+        ActivityLogger::activity('Sounds sort order updated');
+
+        return response()->json([
+            'message' => trans('admin.messages.sort-order-updated')
+        ], 200);
     }
 
     /**
-     * Display the specified resource.
+     * Update enabled/disabled status of a sound
      *
-     * @param int $id
+     * @param \Illuminate\Http\Request  $request  The request
+     * @param int $id The identifier
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function updateEnabled(Request $request, $id)
     {
-        //
-    }
+        UserServices::checkIsUserAdminOrHigher($request->userId);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $this->validate($request, [
+            'sound.enabled' => 'required|boolean',
+        ]);
+        $sound = SoundServices::updateSoundStatus($id, $request->sound['enabled']);
+        $status = 'disabled';
+        if ($sound->enabled) {
+            $status = 'enabled';
+        }
+        $message = trans('admin.messages.status-updated', ['status' => $status, 'title' => $sound->title]);
+
+        ActivityLogger::activity($message);
+
+        return response()->json([
+            'message' => $message
+        ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param \Illuminate\Http\Request  $request  The request
      * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        UserServices::checkIsUserAdminOrHigher($request->userId);
+
+        $sound = SoundServices::deleteSound(SoundServices::getSound($id));
+
+        ActivityLogger::activity('Sounds deleted: ' . $sound);
+
+        return response()->json([
+            'message' => trans('admin.messages.sound-deleted', ['title' => $sound->title])
+        ], 200);
     }
 }

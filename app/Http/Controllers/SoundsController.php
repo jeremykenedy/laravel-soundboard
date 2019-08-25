@@ -6,9 +6,12 @@ use App\Http\Requests\SoundRequest;
 use App\Models\Sound;
 use App\Services\SoundServices;
 use Illuminate\Http\Request;
+use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
 class SoundsController extends Controller
 {
+    use ActivityLogger;
+
     /**
      * Create a new controller instance.
      *
@@ -61,9 +64,10 @@ class SoundsController extends Controller
         $validated = $request->validated();
         $sound = SoundServices::storeNewSound($validated);
 
+        ActivityLogger::activity('New sound created: ' . $sound);
+
         return redirect('sounds')
                     ->with('success', 'Sound created: <strong>'.$sound->title.'</strong>');
-
     }
 
     /**
@@ -107,6 +111,8 @@ class SoundsController extends Controller
         $validated = $request->validated();
         $sound = SoundServices::updateSound(SoundServices::getSound($id), $validated);
 
+        ActivityLogger::activity('Sounds updated: ' . $sound);
+
         return redirect()
                     ->back()
                     ->with('success', 'Sound updated: <strong>'.$sound->title.'</strong>');
@@ -122,6 +128,8 @@ class SoundsController extends Controller
     public function destroy($id)
     {
         $sound = SoundServices::deleteSound(SoundServices::getSound($id));
+
+        ActivityLogger::activity('Sounds deleted: ' . $sound);
 
         return redirect('sounds')->with('success', 'Sound deleted <strong>'.$sound->title.'</strong>');
     }

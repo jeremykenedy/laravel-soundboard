@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sound extends Model
 {
-    use SoftDeletes;
-
     /**
      * The database table used by the model.
      *
@@ -57,7 +54,6 @@ class Sound extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
 
     /**

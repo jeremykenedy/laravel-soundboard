@@ -2,20 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\SoundAdminRequest;
 
-class SoundRequest extends FormRequest
+class SoundRequest extends SoundAdminRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return $this->user()->hasPermission('perms.super.admin') || $this->user()->hasPermission('perms.admin');
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +14,7 @@ class SoundRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|string|min:3|max:255',
+            'title'     => 'required|string|min:3|max:255|unique:sounds,title,'.$this->sound,
             'enabled'   => 'required|boolean',
             'file'      => 'required|string|min:12|max:255',
         ];

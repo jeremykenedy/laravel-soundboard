@@ -11,6 +11,9 @@
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        {{-- Current User Id--}}
+        <meta name="user-id" content="{{ Auth::user()->id }}">
+
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('soundboard.name') }}</title>
         <meta name="description" content="{{ config('soundboard.description') }}">
         <meta name="author" content="{{ config('soundboard.author') }}">

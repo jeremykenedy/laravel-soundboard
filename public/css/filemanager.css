@@ -110,6 +110,22 @@ body .bg-translucent-primary {
   padding-left: 10px;
 }
 
+.cursor-grab {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.cursor-grab {
+  cursor: pointer;
+  cursor: move;
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+.cursor-grab:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .text-white, .navbar-default .navbar-brand {
   color: #ffffff;
 }

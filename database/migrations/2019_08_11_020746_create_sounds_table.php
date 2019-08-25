@@ -20,7 +20,6 @@ class CreateSoundsTable extends Migration
             $table->text('file');
             $table->integer('sort_order');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

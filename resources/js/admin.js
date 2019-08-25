@@ -6,7 +6,9 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import jQuery from 'jquery'
-import Popper from 'popper.js/dist/umd/popper.js';
+import Popper from 'popper.js/dist/umd/popper.js'
+import draggable from "vuedraggable";
+import VueSweetalert2 from 'vue-sweetalert2'
 
 window._ = require('lodash')
 
@@ -31,6 +33,11 @@ if (token) {
 
 window.Vue = require('vue')
 Vue.use(BootstrapVue)
+Vue.use(VueSweetalert2)
+Vue.use(draggable)
+
+// Current User Id
+Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
 /**
  * The following block of code may be used to automatically register your
@@ -48,6 +55,7 @@ Vue.component('sounds-component', require('./components/SoundsComponent.vue').de
 Vue.component('audio-player', require('./components/AudioPlayer.vue').default)
 Vue.component('sound-loader', require('./components/SoundLoader.vue').default)
 Vue.component('nav-bar', require('./components/NavBar.vue').default)
+Vue.component('sounds-table', require('./components/SoundsTable.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
