@@ -12,7 +12,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         {{-- Current User Id--}}
-        <meta name="user-id" content="{{ Auth::user()->id }}">
+        @auth
+            <meta name="user-id" content="{{ Auth::user()->id }}">
+        @endauth
 
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('soundboard.name') }}</title>
         <meta name="description" content="{{ config('soundboard.description') }}">
@@ -40,7 +42,7 @@
         </script>
     </head>
     <body class="{{ $class ?? '' }}">
-        <div id="app" v-cloak>
+        <div id="app" @auth v-cloak @endauth>
             @php
                 $currentUser = auth()->user()
             @endphp
