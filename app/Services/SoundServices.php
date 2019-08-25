@@ -54,14 +54,14 @@ class SoundServices
      */
     public static function getBlankSound()
     {
-        return new Sound;
+        return new Sound();
     }
 
     /**
-     * Update a sound
+     * Update a sound.
      *
      * @param collection $sound     The sound
-     * @param array $soundData      The sound data
+     * @param array      $soundData The sound data
      *
      * @return Collection Sound
      */
@@ -74,10 +74,10 @@ class SoundServices
     }
 
     /**
-     * Update a sound enabled/disabled
+     * Update a sound enabled/disabled.
      *
-     * @param int $soundId      The sound identifier
-     * @param boolean $status   The status
+     * @param int  $soundId The sound identifier
+     * @param bool $status  The status
      *
      * @return collection \App\Models\Sound\Sound $sound
      */
@@ -93,7 +93,7 @@ class SoundServices
     /**
      * Stores a new sound.
      *
-     * @param array $soundData  The sound data
+     * @param array $soundData The sound data
      *
      * @return collection $newSound The newly stored sound
      */
@@ -107,9 +107,9 @@ class SoundServices
     }
 
     /**
-     * Delete a sound
+     * Delete a sound.
      *
-     * @param collection $sound  The sound
+     * @param collection $sound The sound
      *
      * @return Collection of deleted Sound
      */

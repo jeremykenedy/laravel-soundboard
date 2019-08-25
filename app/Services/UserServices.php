@@ -9,7 +9,7 @@ class UserServices
     /**
      * Gets the user.
      *
-     * @param int $userId  The user identifier
+     * @param int $userId The user identifier
      *
      * @return collection The user.
      */
@@ -19,9 +19,9 @@ class UserServices
     }
 
     /**
-     * Check is user is admin or super admin
+     * Check is user is admin or super admin.
      *
-     * @param int $userId  The user identifier
+     * @param int $userId The user identifier
      */
     public static function checkIsUserAdminOrHigher($userId)
     {
