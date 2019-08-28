@@ -6,6 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel-soundboard/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/1699-shield.svg)](https://madewithlaravel.com/p/laravel-soundboard/shield-link)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 #### Table of contents
