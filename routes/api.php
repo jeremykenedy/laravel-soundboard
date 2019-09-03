@@ -18,8 +18,11 @@ use Illuminate\Http\Request;
 // });
 
 Route::group(['middleware' => ['activity']], function () {
-    Route::get('sounds', 'Api\SoundsController@index');
-    Route::put('sounds/updateAll', 'Api\SoundsController@updateAllSortOrder');
-    Route::patch('sound/updateEnabled/{id}', 'Api\SoundsController@updateEnabled');
-    Route::post('sound/delete/{id}', 'Api\SoundsController@destroy');
+    Route::get('sounds', 'Api\ApiSoundsController@index');
+    Route::put('sounds/updateAll', 'Api\ApiSoundsController@updateAllSortOrder');
+    Route::patch('sound/updateEnabled/{id}', 'Api\ApiSoundsController@updateEnabled');
+    Route::post('sound/delete/{id}', 'Api\ApiSoundsController@destroy');
+
+Route::post('/upload-sound', 'Api\ApiSoundsController@uploadSound')->name('upload-sound');
+
 });

@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
         ],
     ]);
     Route::post('/update-theme', 'ThemesManagementController@updateDefaultTheme')->name('update-theme');
+    Route::get('sounds/create-recording', 'SoundsController@createRecording')->name('createrecording');
     Route::resource(
         'sounds',
         'SoundsController', [
@@ -55,7 +56,7 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
 
 // Registered Users Routes
 Route::group(['middleware' => ['auth', 'permission:perms.user', 'web', 'activity']], function () {
-    Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('admin', 'AdminController@index')->name('admin');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

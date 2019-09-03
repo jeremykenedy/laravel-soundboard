@@ -61,6 +61,9 @@ return [
             'title'     => 'Editing Sounds: <strong>:title</strong>',
             'back'      => 'Back to Sounds',
         ],
+        'record' => [
+            'title'  => 'Record New Sound',
+        ],
     ],
 
     'dropdown' => [

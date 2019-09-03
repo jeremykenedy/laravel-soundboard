@@ -56,6 +56,7 @@ Vue.component('audio-player', require('./components/AudioPlayer.vue').default)
 Vue.component('sound-loader', require('./components/SoundLoader.vue').default)
 Vue.component('nav-bar', require('./components/NavBar.vue').default)
 Vue.component('sounds-table', require('./components/SoundsTable.vue').default)
+Vue.component('sound-recorder', require('./components/SoundRecorder.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

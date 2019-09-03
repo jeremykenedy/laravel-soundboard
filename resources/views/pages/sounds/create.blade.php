@@ -14,7 +14,7 @@
             <div class="col-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <div class="row align-items-center">
+                        <div class="rlaraow align-items-center">
                             <div class="col">
                                 <a href="{{ route('sounds') }}" class="btn btn-sm btn-primary float-right">
                                     <i class="fas fa-reply fa-fw"></i>
