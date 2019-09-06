@@ -1,46 +1,46 @@
 <template>
 
 <div class="card-body">
-    <div id="controls" class="mb-3">
-        <div class="row">
-            <div class="col-sm-4 mb-2">
-              <button id="recordButton" class="btn btn-danger btn-block" @click="startRecording">
-                Record
-              </button>
-            </div>
-            <div class="col-sm-4 mb-2">
-              <button id="pauseButton" class="btn btn-primary btn-block" @click="pauseRecording" disabled>
-                Pause
-              </button>
-            </div>
-            <div class="col-sm-4 mb-2">
-              <button id="stopButton" class="btn btn-warning btn-block" @click="stopRecording" disabled>
-                Stop
-              </button>
-            </div>
-        </div>
+  <div id="controls" class="mb-3">
+    <div class="row">
+      <div class="col-sm-4 mb-2">
+        <button id="recordButton" class="btn btn-danger btn-block" @click="startRecording">
+          Record
+        </button>
+      </div>
+      <div class="col-sm-4 mb-2">
+        <button id="pauseButton" class="btn btn-primary btn-block" @click="pauseRecording" disabled>
+          Pause
+        </button>
+      </div>
+      <div class="col-sm-4 mb-2">
+        <button id="stopButton" class="btn btn-warning btn-block" @click="stopRecording" disabled>
+          Stop
+        </button>
+      </div>
     </div>
-    <div class="clearfix"></div>
-    <div id="formats" class="mb-3"></div>
-    <div v-if="this.isRecording">
-      <span style="font-size: 3em" class="text-danger">
-        <i class="fas fa-microphone-alt fa-fw fa-beat"></i>
-        <i class="fas fa-circle-notch fa-fw fa-spin"></i>
-        <span style="font-size: .5em">
-          Recording
-        </span>
+  </div>
+  <div class="clearfix"></div>
+  <div id="formats" class="mb-3"></div>
+  <div v-if="this.isRecording">
+    <span style="font-size: 3em" class="text-danger">
+      <i class="fas fa-microphone-alt fa-fw fa-beat"></i>
+      <i class="fas fa-circle-notch fa-fw fa-spin"></i>
+      <span style="font-size: .5em">
+        Recording
       </span>
-    </div>
-    <div v-if="this.isPaused">
-      <span style="font-size: 3em" class="text-mute">
-        <i class="fas fa-microphone-alt-slash fa-fw"></i>
-        <i class="fas fa-pause fa-fw"></i>
-        <span style="font-size: .5em">
-          Paused
-        </span>
+    </span>
+  </div>
+  <div v-if="this.isPaused">
+    <span style="font-size: 3em" class="text-mute">
+      <i class="fas fa-microphone-alt-slash fa-fw"></i>
+      <i class="fas fa-pause fa-fw"></i>
+      <span style="font-size: .5em">
+        Paused
       </span>
-    </div>
-    <ul id="recordingsList" class="list-unstyled"></ul>
+    </span>
+  </div>
+  <ul id="recordingsList" class="list-unstyled"></ul>
 </div>
 
 </template>
@@ -69,7 +69,7 @@ export default {
       recordingsList: null,
       formats: null,
       isRecording: false,
-      isPaused: false,
+      isPaused: false
     }
   },
   mounted () {
@@ -127,7 +127,6 @@ export default {
       self.stopButton.disabled = false
       self.pauseButton.disabled = false
       navigator.mediaDevices.getUserMedia(self.constraints).then(function(stream) {
-        console.log("getUserMedia() success, stream created, initializing Recorder.js ...")
         self.audioContext = new AudioContext()
         self.formats.innerHTML="Format: 1 channel pcm @ "+self.audioContext.sampleRate/1000+"kHz"
         self.gumStream = stream
@@ -137,7 +136,7 @@ export default {
         })
         self.rec.record()
       }).catch(function(err) {
-        console.log(err)
+        // console.log(err)
         self.recordButton.disabled = false
         self.stopButton.disabled = true
         self.pauseButton.disabled = true
@@ -145,7 +144,6 @@ export default {
     },
     pauseRecording () {
       var self = this
-      console.log("pauseButton clicked rec.recording=", self.rec.recording )
       if (self.rec.recording) {
         self.rec.stop()
         self.isRecording = false
@@ -178,13 +176,10 @@ export default {
       var li = document.createElement('li')
       var link = document.createElement('a')
       var saveItem = null
-      var filename = ''
 
       au.controls = true
       au.src = url
-      filename = self.setupFileName()
-      saveItem = self.setupSaveItem(blob, filename)
-
+      saveItem = self.setupSaveItem(blob)
       li.appendChild(au)
       li.appendChild(link)
       li.appendChild(document.createTextNode (" "))
@@ -192,38 +187,58 @@ export default {
       self.recordingsList.innerHTML = ''
       self.recordingsList.appendChild(li)
     },
-    setupFileName () {
-      var sep = "_"
-      var dObj = new Date()
-      var filename = dObj.getFullYear().toString() + sep +
-      ('0' + parseInt(dObj.getMonth() + 1).toString().slice(-2)).toString() + sep +
-      ('0' + parseInt(dObj.getDate() + 1).toString().slice(-2)).toString() + sep +
-      ('0' + parseInt(dObj.getHours() + 1).toString().slice(-2)).toString() +
-      ('0' + parseInt(dObj.getMinutes() + 1).toString().slice(-2)).toString() +
-      ('0' + parseInt(dObj.getSeconds() + 1).toString().slice(-2)).toString() +
-      ('0' + parseInt(dObj.getMilliseconds() + 1).toString().slice(-2)).toString() +
-      ".wav"
-
-      return filename
-    },
     setupSaveItem (blob, filename) {
       var self = this
-      var saveItem = document.createElement('a');
-      saveItem.setAttribute('class', 'btn btn-success btn-block col-sm-6');
-      saveItem.href="#";
-      saveItem.innerHTML = "Save Recording";
-      saveItem.addEventListener("click", function(event){
-        self.saveRecordingtoApi(blob, filename)
+      var item = null
+      var label = null
+      var input = null
+      var saveItem = null
+      item = document.createElement("div")
+      item.setAttribute("class", "form-group")
+      item.setAttribute("id", "filename_form_group")
+      saveItem = document.createElement('div')
+      saveItem.setAttribute('class', 'btn btn-success btn-block col-sm-6')
+      saveItem.innerHTML = "Save Recording"
+      label = document.createElement("LABEL")
+      label.setAttribute("for", "filename")
+      label.setAttribute("class", "control-label")
+      label.appendChild(document.createTextNode("Filename"))
+      input = document.createElement("input")
+      input.setAttribute("type", "text")
+      input.setAttribute("id", "filename")
+      input.setAttribute("name", "filename")
+      input.setAttribute("placeholder", "filename")
+      input.setAttribute('class', 'form-control col-lg-9 mb-3')
+      input.required = true
+      item.appendChild(label)
+      item.appendChild(input)
+      item.appendChild(saveItem)
+      saveItem.addEventListener("click", function(event) {
+        self.saveRecordingtoApi(blob)
       })
-
-      return saveItem
+      return item
     },
-    saveRecordingtoApi (blob, filename) {
-      var self = this;
+    saveRecordingtoApi (blob) {
+      var self = this
+      var filenameGroup = document.getElementById("filename_form_group")
+      var filenameInput = document.getElementById("filename")
+      var filenameInputValue = filenameInput.value
+      filenameGroup.setAttribute('class', 'form-group has-feedback')
       var xhr=new XMLHttpRequest()
       xhr.onload=function(e) {
         if(this.readyState === 4) {
-          var resp = JSON.parse(e.target.responseText);
+          var resp = JSON.parse(e.target.responseText)
+          if (resp.error) {
+            self.$swal.fire({
+              toast: true,
+              title: resp.error,
+              type: 'warning',
+              position: 'top',
+              showConfirmButton: false,
+              timer: 6500
+            })
+            return false
+          }
           self.clearRecording()
           self.$swal.fire({
             toast: true,
@@ -235,8 +250,33 @@ export default {
           })
         }
       }
+      if (filenameInputValue.length >= 1 && filenameInputValue.length <= 3) {
+        self.$swal.fire({
+          toast: true,
+          title: 'File Name must be more than 3 characters',
+          type: 'warning',
+          position: 'top',
+          showConfirmButton: false,
+          timer: 7500
+        })
+        filenameGroup.setAttribute('class', 'form-group has-error has-feedback')
+        return false
+      }
+      if (filenameInputValue.length < 3) {
+        self.$swal.fire({
+          toast: true,
+          title: 'File Name is required',
+          type: 'warning',
+          position: 'top',
+          showConfirmButton: false,
+          timer: 7500
+        })
+        filenameGroup.setAttribute('class', 'form-group has-error has-feedback')
+        return false
+      }
       var fd=new FormData()
-      fd.append("audio_data",blob, filename)
+      fd.append("userId", self.$userId)
+      fd.append("audio_data", blob, filenameInputValue)
       xhr.open("POST","/api/upload-sound",true)
       xhr.send(fd)
     },

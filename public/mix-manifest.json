@@ -1,6 +1,7 @@
 {
-    "/js/admin.js": "/js/admin.js?id=e16a4df9e3947a859bca",
+    "/js/admin.js": "/js/admin.js?id=a9fb26665d3656f3d74c",
     "/js/app.js": "/js/app.js?id=e20834855e786408975a",
-    "/css/app.css": "/css/app.css?id=562316fc98b451990350",
-    "/css/filemanager.css": "/css/filemanager.css?id=c3d5c1cf48e5ffea4487"
+    "/css/app.css": "/css/app.css?id=629332c1dfee84ac989f",
+    "/css/filemanager.css": "/css/filemanager.css?id=c3d5c1cf48e5ffea4487",
+    "/js/vendor/recorder.js": "/js/vendor/recorder.js?id=351d5d1af7d63f0a1434"
 }

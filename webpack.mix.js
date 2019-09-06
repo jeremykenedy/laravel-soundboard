@@ -61,6 +61,7 @@ mix.webpackConfig({
     jquery: ['$', 'window.jQuery', 'jQuery'],
     Popper: 'popper.js/dist/umd/popper.js'
 })
+.copy('resources/js/vendor/recorder.js', 'public/js/vendor/recorder.js', true)
 .copy('resources/images', 'public/images', true)
 .sass('resources/sass/app.scss', 'public/css')
 .sass('resources/sass/filemanager.scss', 'public/css')

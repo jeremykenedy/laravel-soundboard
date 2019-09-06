@@ -41,4 +41,25 @@ class AdminController extends Controller
 
         return view('pages.dashboard', $data);
     }
+
+    /**
+     * Show the application filemanager.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function filemanager()
+    {
+        $uploadedFilePath = "sound-files/";
+        $uploadfilesNames = collect(scandir($uploadedFilePath));
+
+        $recordedFilePath = "sound-files/recordings/";
+        $recordedfilesNames = collect(scandir($recordedFilePath));
+
+        $data = [
+            'uploadfilesNames'  => $uploadfilesNames,
+            'recordedfilesNames'  => $recordedfilesNames,
+        ];
+
+        return view('pages.filemanager', $data);
+    }
 }

@@ -51,10 +51,15 @@ class SoundsController extends Controller
         return view('pages.sounds.create', ['sound' => $sound]);
     }
 
-public function createRecording()
-{
-    return view('pages.sounds.record-sound');
-}
+    /**
+     * Create Recording Page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createRecording()
+    {
+        return view('pages.sounds.record-sound');
+    }
 
     /**
      * Store a newly created resource in storage.

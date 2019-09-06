@@ -76,12 +76,19 @@
                     </a>
                 </li>
                 @if($currentUser->hasPermission('perms.super.admin') || $currentUser->hasPermission('perms.admin'))
-                    <li class="nav-item {{ Request::is('sounds') || Request::routeIs('createsound') || Request::routeIs('editsound') ? 'active' : null }}">
+                    <li class="nav-item {{ Request::is('sounds') || Request::routeIs('createsound') || Request::routeIs('editsound') || Request::routeIs('createrecording') ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('sounds') }}">
                             <i class="ni ni-sound-wave text-primary"></i>
                             {!! trans('admin.sidebar.sounds') !!}
                         </a>
                     </li>
+                    <li class="nav-item {{ Request::is('filemanager') || Request::routeIs('filemanager') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ route('filemanager') }}">
+                            <i class="fas fa-folder-open text-primary"></i>
+                            File Manager
+                        </a>
+                    </li>
+
                     <li class="nav-item {{ Request::is('themes') ? 'active' : null }}">
                         <a class="nav-link" href="{{ route('themes') }}">
                             <i class="fas fa-palette text-primary"></i>

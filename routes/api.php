@@ -22,7 +22,5 @@ Route::group(['middleware' => ['activity']], function () {
     Route::put('sounds/updateAll', 'Api\ApiSoundsController@updateAllSortOrder');
     Route::patch('sound/updateEnabled/{id}', 'Api\ApiSoundsController@updateEnabled');
     Route::post('sound/delete/{id}', 'Api\ApiSoundsController@destroy');
-
-Route::post('/upload-sound', 'Api\ApiSoundsController@uploadSound')->name('upload-sound');
-
+    Route::post('upload-sound', 'Api\ApiSoundsController@uploadSound')->name('upload-sound');
 });

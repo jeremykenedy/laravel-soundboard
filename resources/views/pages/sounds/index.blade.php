@@ -43,6 +43,10 @@
                                 </h3>
                             </div>
                             <div class="col text-right">
+                                <a href="{{ route('createrecording') }}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    Record Sound
+                                </a>
                                 <a href="{{ route('createsound') }}" class="btn btn-sm btn-primary">
                                     <i class="fas fa-plus"></i>
                                     {{ trans('admin.sounds.index.add-new') }}

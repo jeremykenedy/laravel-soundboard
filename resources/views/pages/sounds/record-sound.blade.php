@@ -42,7 +42,5 @@
 @push('js')
 @endpush
 @section('js')
-{{--
-    @include('scripts.file-manager')
---}}
+    <script src="{{ asset('/js/vendor/recorder.js') }}"></script>
 @endsection

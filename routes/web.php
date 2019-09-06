@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
             ],
         ]
     );
+    Route::get('filemanager', 'AdminController@filemanager')->name('filemanager');
 });
 
 // Registered Users Routes

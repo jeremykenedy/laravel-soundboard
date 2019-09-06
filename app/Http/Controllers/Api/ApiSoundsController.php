@@ -123,7 +123,7 @@ class ApiSoundsController extends Controller
      */
     public function uploadSound(Request $request)
     {
-        Log::info($request);
+        UserServices::checkIsUserAdminOrHigher($request->userId);
 
         $file = $request->file('audio_data');
 
@@ -131,8 +131,18 @@ class ApiSoundsController extends Controller
             $uniqueid=uniqid();
             $original_name = $file->getClientOriginalName();
             $extension = 'wav';
-            // $name = Carbon::now()->format('Ymd').'_'.$uniqueid.'.'.$extension;
             $name = $original_name.'.'.$extension;
+
+            $path = "sound-files/recordings/";
+            $files = scandir($path);
+
+            if (in_array($name, array_map('strtolower', $files))) {
+                Log::info('its bad');
+                return response()->json([
+                    'error' => 'Filename already exists. Choose another filename.',
+                ], 422);
+            }
+
             $storedFile = $file->storeAs('recordings', $name, 'sound-files');
 
             return response()->json([
@@ -143,8 +153,5 @@ class ApiSoundsController extends Controller
         return response()->json([
             'error' => 'missing file or is invalid',
         ], 422);
-
     }
-
-
 }

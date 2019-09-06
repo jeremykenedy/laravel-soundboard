@@ -11941,3 +11941,43 @@ body .bg-translucent-primary {
 .switch.checked .inactive {
   display: none;
 }
+
+#recordingsList audio {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.form-group.has-error label {
+  color: #e3342f;
+}
+.form-group.has-error input {
+  border-color: #e3342f;
+}
+
+.fa-beat {
+  -webkit-animation: fa-beat 1s infinite linear;
+  animation: fa-beat 1s infinite linear;
+}
+
+@-webkit-keyframes fa-beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fa-beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
