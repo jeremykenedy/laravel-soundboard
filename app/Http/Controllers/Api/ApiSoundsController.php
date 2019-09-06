@@ -7,11 +7,8 @@ use App\Models\Sound;
 use App\Services\SoundServices;
 use App\Services\UserServices;
 use Illuminate\Http\Request;
-use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
-
 use Illuminate\Support\Facades\Log;
-
-use Carbon\Carbon;
+use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
 class ApiSoundsController extends Controller
 {
@@ -115,7 +112,7 @@ class ApiSoundsController extends Controller
     }
 
     /**
-     * Handle uploads of new sound files
+     * Handle uploads of new sound files.
      *
      * @param  Request
      *
@@ -127,17 +124,18 @@ class ApiSoundsController extends Controller
 
         $file = $request->file('audio_data');
 
-        if($request->hasFile('audio_data') && $file->isValid()){
-            $uniqueid=uniqid();
+        if ($request->hasFile('audio_data') && $file->isValid()) {
+            $uniqueid = uniqid();
             $original_name = $file->getClientOriginalName();
             $extension = 'wav';
             $name = $original_name.'.'.$extension;
 
-            $path = "sound-files/recordings/";
+            $path = 'sound-files/recordings/';
             $files = scandir($path);
 
             if (in_array($name, array_map('strtolower', $files))) {
                 Log::info('its bad');
+
                 return response()->json([
                     'error' => 'Filename already exists. Choose another filename.',
                 ], 422);
@@ -146,7 +144,7 @@ class ApiSoundsController extends Controller
             $storedFile = $file->storeAs('recordings', $name, 'sound-files');
 
             return response()->json([
-                'message' => 'File Recorded: ' . $name,
+                'message' => 'File Recorded: '.$name,
             ], 202);
         }
 

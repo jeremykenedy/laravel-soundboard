@@ -49,14 +49,14 @@ class AdminController extends Controller
      */
     public function filemanager()
     {
-        $uploadedFilePath = "sound-files/";
+        $uploadedFilePath = 'sound-files/';
         $uploadfilesNames = collect(scandir($uploadedFilePath));
 
-        $recordedFilePath = "sound-files/recordings/";
+        $recordedFilePath = 'sound-files/recordings/';
         $recordedfilesNames = collect(scandir($recordedFilePath));
 
         $data = [
-            'uploadfilesNames'  => $uploadfilesNames,
+            'uploadfilesNames'    => $uploadfilesNames,
             'recordedfilesNames'  => $recordedfilesNames,
         ];
 
