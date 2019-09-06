@@ -52,7 +52,7 @@ class SoundsController extends Controller
     }
 
     /**
-     * Create Recording Page
+     * Create Recording Page.
      *
      * @return \Illuminate\Http\Response
      */
