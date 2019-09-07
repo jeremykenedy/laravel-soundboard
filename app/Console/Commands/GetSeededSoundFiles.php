@@ -37,10 +37,10 @@ class GetSeededSoundFiles extends Command
      */
     public function handle()
     {
-        $uploadsFolder = 'public/' . config('soundboard.folders.uploads');
+        $uploadsFolder = 'public/'.config('soundboard.folders.uploads');
 
-        echo shell_exec('rm -R -f ' . $uploadsFolder);
-        echo shell_exec('git clone '.config('soundboard.seededSoundsRepository') .' ' . $uploadsFolder);
-        echo shell_exec('rm -f ' . $uploadsFolder . '/LICENSE ' . $uploadsFolder . '/README.md');
+        echo shell_exec('rm -R -f '.$uploadsFolder);
+        echo shell_exec('git clone '.config('soundboard.seededSoundsRepository').' '.$uploadsFolder);
+        echo shell_exec('rm -f '.$uploadsFolder.'/LICENSE '.$uploadsFolder.'/README.md');
     }
 }

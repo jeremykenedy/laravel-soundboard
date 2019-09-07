@@ -8,7 +8,6 @@ use App\Services\SoundServices;
 use App\Services\UserServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
 class ApiSoundsController extends Controller
@@ -131,7 +130,7 @@ class ApiSoundsController extends Controller
             $extension = 'wav';
             $name = $original_name.'.'.$extension;
 
-            $path = config('soundboard.folders.recordings') . "/";
+            $path = config('soundboard.folders.recordings').'/';
             if (!File::exists($path)) {
                 File::makeDirectory($path);
             }
@@ -146,7 +145,7 @@ class ApiSoundsController extends Controller
             }
             $storedFile = $file->storeAs(config('soundboard.folders.recordings'), $name, config('soundboard.folders.uploads'));
 
-            ActivityLogger::activity('New file recorded: ' . $name);
+            ActivityLogger::activity('New file recorded: '.$name);
 
             return response()->json([
                 'message' => 'File Recorded: '.$name,

@@ -37,10 +37,10 @@ class GetSoundFiles extends Command
      */
     public function handle()
     {
-        $uploadsFolder = 'public/' . config('soundboard.folders.uploads');
+        $uploadsFolder = 'public/'.config('soundboard.folders.uploads');
 
-        echo shell_exec('rm -R -f ' . $uploadsFolder);
-        echo shell_exec('git clone '.config('soundboard.soundsRepository') .' ' . $uploadsFolder);
+        echo shell_exec('rm -R -f '.$uploadsFolder);
+        echo shell_exec('git clone '.config('soundboard.soundsRepository').' '.$uploadsFolder);
         echo shell_exec('rm -f public/sound-files/LICENSE public/sound-files/README.md');
     }
 }
