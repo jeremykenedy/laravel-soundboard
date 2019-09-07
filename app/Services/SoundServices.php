@@ -128,8 +128,8 @@ class SoundServices
      */
     public static function checkAndPullSoundsAndRecordings()
     {
-        $uploadedFilePath = config('soundboard.folders.uploads') . "/";
-        $recordedFilePath = $uploadedFilePath . config('soundboard.folders.recordings') . "/";
+        $uploadedFilePath = config('soundboard.folders.uploads').'/';
+        $recordedFilePath = $uploadedFilePath.config('soundboard.folders.recordings').'/';
         $fileTypes = 'wav';
 
         if (!File::exists($uploadedFilePath)) {
@@ -140,11 +140,11 @@ class SoundServices
             File::makeDirectory($recordedFilePath);
         }
 
-        $uploadfilesNames = collect(preg_grep('~\.(' . $fileTypes . ')$~', scandir($uploadedFilePath)));
-        $recordedfilesNames = collect(preg_grep('~\.(' . $fileTypes . ')$~', scandir($recordedFilePath)));
+        $uploadfilesNames = collect(preg_grep('~\.('.$fileTypes.')$~', scandir($uploadedFilePath)));
+        $recordedfilesNames = collect(preg_grep('~\.('.$fileTypes.')$~', scandir($recordedFilePath)));
 
         $data = [
-            'uploadfilesNames'  => $uploadfilesNames,
+            'uploadfilesNames'    => $uploadfilesNames,
             'recordedfilesNames'  => $recordedfilesNames,
         ];
 
