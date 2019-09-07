@@ -129,16 +129,14 @@ class ApiSoundsController extends Controller
             $original_name = $file->getClientOriginalName();
             $extension = 'wav';
             $name = $original_name.'.'.$extension;
+            $path = config('soundboard.folders.uploads').'/'.config('soundboard.folders.recordings').'/';
 
-            $path = config('soundboard.folders.recordings').'/';
             if (!File::exists($path)) {
                 File::makeDirectory($path);
             }
 
             $files = scandir($path);
             if (in_array($name, array_map('strtolower', $files))) {
-                Log::info('its bad');
-
                 return response()->json([
                     'error' => 'Filename already exists. Choose another filename.',
                 ], 422);
