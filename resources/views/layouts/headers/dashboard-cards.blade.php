@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="header-body mt-md-1">
             <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-stats mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -23,8 +23,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-stats mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -44,8 +44,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-stats mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -65,8 +65,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-stats mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -86,8 +86,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-stats mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -107,8 +107,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-stats mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
