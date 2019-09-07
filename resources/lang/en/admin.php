@@ -21,6 +21,7 @@ return [
         'create-user'   => 'Create User',
         'edit-user'     => 'Edit User',
         'edit-profile'  => 'Edit Profile',
+        'file-manager'  => 'File Manager',
     ],
 
     'dashboard' => [
@@ -97,5 +98,10 @@ return [
         'sound-deleted'         => 'Sound deleted: <strong>:title</strong>',
         'sort-order-updated'    => 'Sort order updated successfully!',
         'status-updated'        => 'Successfully :status: :title',
+    ],
+
+    'file-manager' => [
+        'uploaded-sounds' => 'Uploaded Sounds',
+        'recorded-sounds' => 'Recorded Sounds',
     ],
 ];

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Sound;
+use Illuminate\Support\Facades\File;
 
 class SoundServices
 {
@@ -118,5 +119,35 @@ class SoundServices
         $sound->delete();
 
         return $sound;
+    }
+
+    /**
+     * Check for sounds and recording file directory existance and get any files contained within.
+     *
+     * @return array of collections
+     */
+    public static function checkAndPullSoundsAndRecordings()
+    {
+        $uploadedFilePath = config('soundboard.folders.uploads') . "/";
+        $recordedFilePath = $uploadedFilePath . config('soundboard.folders.recordings') . "/";
+        $fileTypes = 'wav';
+
+        if (!File::exists($uploadedFilePath)) {
+            File::makeDirectory($uploadedFilePath);
+        }
+
+        if (!File::exists($recordedFilePath)) {
+            File::makeDirectory($recordedFilePath);
+        }
+
+        $uploadfilesNames = collect(preg_grep('~\.(' . $fileTypes . ')$~', scandir($uploadedFilePath)));
+        $recordedfilesNames = collect(preg_grep('~\.(' . $fileTypes . ')$~', scandir($recordedFilePath)));
+
+        $data = [
+            'uploadfilesNames'  => $uploadfilesNames,
+            'recordedfilesNames'  => $recordedfilesNames,
+        ];
+
+        return $data;
     }
 }

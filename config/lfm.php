@@ -15,7 +15,7 @@ return [
     'middlewares' => ['web', 'auth'],
 
     // The url to this package. Change it if necessary.
-    'url_prefix' => 'laravel-filemanager',
+    'url_prefix' => 'files',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
     'base_directory' => 'public',
 
     'images_folder_name' => 'photos',
-    'files_folder_name'  => 'sound-files',
+    'files_folder_name'  => env('SOUNDBOARD_UPLOADS_FOLDER', 'sound-files'),
 
     'shared_folder_name' => '/',
     'thumb_folder_name'  => 'thumbs',

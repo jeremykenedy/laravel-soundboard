@@ -30,11 +30,13 @@ class SoundsController extends Controller
     {
         $sounds = SoundServices::getSortedSounds();
         $enabledSounds = SoundServices::getEnabledSortedSounds();
+        $SoundFiledata = SoundServices::checkAndPullSoundsAndRecordings();
 
         $data = [
             'sounds'        => $sounds,
             'enabledSounds' => $enabledSounds,
         ];
+        $data = array_merge($data, $SoundFiledata);
 
         return view('pages.sounds.index', $data);
     }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Sound;
 use App\Models\Theme;
 use App\Models\User;
+use App\Services\SoundServices;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -30,6 +32,7 @@ class AdminController extends Controller
         $user = auth()->user();
         $users = User::all();
         $themes = Theme::enabledThemes()->get();
+        $SoundFiledata = SoundServices::checkAndPullSoundsAndRecordings();
 
         $data = [
             'sounds'        => $sounds,
@@ -38,6 +41,7 @@ class AdminController extends Controller
             'users'         => $users,
             'themes'        => $themes,
         ];
+        $data = array_merge($data, $SoundFiledata);
 
         return view('pages.dashboard', $data);
     }
@@ -49,16 +53,7 @@ class AdminController extends Controller
      */
     public function filemanager()
     {
-        $uploadedFilePath = "sound-files/";
-        $uploadfilesNames = collect(scandir($uploadedFilePath));
-
-        $recordedFilePath = "sound-files/recordings/";
-        $recordedfilesNames = collect(scandir($recordedFilePath));
-
-        $data = [
-            'uploadfilesNames'  => $uploadfilesNames,
-            'recordedfilesNames'  => $recordedfilesNames,
-        ];
+        $data = SoundServices::checkAndPullSoundsAndRecordings();
 
         return view('pages.filemanager', $data);
     }

@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                                        <i class="fas fa-palette"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                     </span>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
                                         <i class="fas fa-palette"></i>
                                     </div>
                                 </div>

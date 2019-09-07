@@ -42,7 +42,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Inital Users to be seeded
+    | Artisan Command `php artisan get-seeded-sounds` associated repository
+    |--------------------------------------------------------------------------
+    */
+    'seededSoundsRepository'  => env('SOUNDBOARD_SEEDED_SOUNDS_REPO', 'https://github.com/jeremykenedy/jeremy-sound-board'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sound Folders
+    |--------------------------------------------------------------------------
+    */
+    'folders'  => [
+        'uploads'       => env('SOUNDBOARD_UPLOADS_FOLDER', 'sound-files'),
+        'recordings'    => env('SOUNDBOARD_RECORDINGS_FOLDER', 'recordings'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Inital Seeders
     |--------------------------------------------------------------------------
     */
     'baseSuperAdminUser01Name'  => env('INITIAL_SEEDED_SUPER_ADMIN_USERNAME', 'Super Admin'),
@@ -59,4 +76,5 @@ return [
     'baseUser01Email'           => env('INITIAL_SEEDED_USER_USEREMAIL', 'user@user.com'),
     'baseUser01PW'              => env('INITIAL_SEEDED_USER_USERPASSWORD', 'password'),
 
+    'seedSounds'                => env('SOUNDBOARD_SEED_EXAMPLE_SOUNDS', false),
 ];

@@ -12,7 +12,7 @@ class SoundsTableSeeder extends Seeder
      */
     public function run()
     {
-        $folder = '/sound-files';
+        $folder = '/' . config('folders.uploads');
         $sounds = [
             [
                 'enabled' => 1,
@@ -108,18 +108,22 @@ class SoundsTableSeeder extends Seeder
 
         $sortOrder = 1;
 
-        foreach ($sounds as $sound) {
-            $newSound = Sound::where('title', '=', $sound['title'])->first();
+        if (config('soundboard.seedSounds')) {
+            foreach ($sounds as $sound) {
+                $newSound = Sound::where('title', '=', $sound['title'])->first();
 
-            if ($newSound === null) {
-                $newSound = Sound::create([
-                    'enabled'       => $sound['enabled'],
-                    'title'         => $sound['title'],
-                    'file'          => $sound['file'],
-                    'sort_order'    => $sortOrder,
-                ]);
-                $sortOrder += 1;
+                if ($newSound === null) {
+                    $newSound = Sound::create([
+                        'enabled'       => $sound['enabled'],
+                        'title'         => $sound['title'],
+                        'file'          => $sound['file'],
+                        'sort_order'    => $sortOrder,
+                    ]);
+                    $sortOrder += 1;
+                }
             }
+
+            \Artisan::call('get-seeded-sounds');
         }
     }
 }

@@ -18,7 +18,7 @@ class GetSoundFiles extends Command
      *
      * @var string
      */
-    protected $description = 'Get the set of sound files from git to work with the seeded sounds.';
+    protected $description = 'Get the set of sound files from git.';
 
     /**
      * Create a new command instance.
@@ -37,8 +37,10 @@ class GetSoundFiles extends Command
      */
     public function handle()
     {
-        echo shell_exec('rm -R -f public/sound-files');
-        echo shell_exec('git clone '.config('soundboard.soundsRepository').' public/sound-files');
+        $uploadsFolder = 'public/' . config('soundboard.folders.uploads');
+
+        echo shell_exec('rm -R -f ' . $uploadsFolder);
+        echo shell_exec('git clone '.config('soundboard.soundsRepository') .' ' . $uploadsFolder);
         echo shell_exec('rm -f public/sound-files/LICENSE public/sound-files/README.md');
     }
 }
