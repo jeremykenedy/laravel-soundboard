@@ -12,7 +12,7 @@ class SoundsTableSeeder extends Seeder
      */
     public function run()
     {
-        $folder = '/'.config('folders.uploads');
+        $folder = '/'.config('soundboard.folders.uploads');
         $sounds = [
             [
                 'enabled' => 1,
