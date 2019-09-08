@@ -20,7 +20,6 @@
     $bootstrapCardClasses = (is_null(config('laravelPhpInfo.bootstrapCardClasses')) ? '' : config('laravelPhpInfo.bootstrapCardClasses'));
 @endphp
 
-
 @if(config('laravelPhpInfo.usePHPinfoCSS'))
     <style type="text/css" media="screen">
         .php-info pre {
@@ -102,7 +101,6 @@
         }
     </style>
 @endif
-
 
 @section('content')
     @include('layouts.headers.spaced')
