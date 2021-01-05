@@ -41,7 +41,8 @@ Route::group(['middleware' => ['auth', 'permission:perms.admin', 'web', 'activit
     Route::get('sounds/create-recording', 'SoundsController@createRecording')->name('createrecording');
     Route::resource(
         'sounds',
-        'SoundsController', [
+        'SoundsController',
+        [
             'names' => [
                 'index'     => 'sounds',
                 'show'      => 'showsound',
