@@ -94,8 +94,10 @@ class UserController extends Controller
     {
         $user->update(
             $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+                ->except(
+                    [$request->get('password') ? '' : 'password']
+                )
+        );
 
         $role = config('roles.models.role')::find($request->role);
         $user->detachAllRoles();

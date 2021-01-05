@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SoundRequest;
 use App\Services\SoundServices;
-use Illuminate\Http\Request;
 use jeremykenedy\LaravelLogger\App\Http\Traits\ActivityLogger;
 
 class SoundsController extends Controller
